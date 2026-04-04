@@ -1,0 +1,1310 @@
+﻿node.exe : (node:2476) Warning: SECURITY WARNING: The 
+SSL modes 'prefer', 'require', and 'verify-ca' are 
+treated as aliases for 'verify-full'.
+At line:1 char:1
++ & "C:\Program Files\nodejs/node.exe" 
+"C:\Users\amey\AppData\Roaming\n ...
++ ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+~~~~~~~~~~~~~~
+    + CategoryInfo          : NotSpecified: ((node:2476) 
+    War... 'verify-full'.:String) [], RemoteException
+    + FullyQualifiedErrorId : NativeCommandError
+ 
+In the next major version (pg-connection-string v3.0.0 
+and pg v9.0.0), these modes will adopt standard libpq 
+semantics, which have weaker security guarantees.
+
+To prepare for this change:
+- If you want the current behavior, explicitly use 
+'sslmode=verify-full'
+- If you want libpq compatibility now, use 
+'uselibpqcompat=true&sslmode=require'
+
+See 
+https://www.postgresql.org/docs/current/libpq-ssl.html 
+for libpq SSL mode definitions.
+(Use `node --trace-warnings ...` to show where the 
+warning was created)
+[2026-04-03 23:31:23.026] [34mDEBUG[39m: [36mRedis client connected[39m
+[2026-04-03 23:31:24.687] [34mDEBUG[39m: [36mNew PostgreSQL client connected[39m
+    [35mcorrelationId[39m: "42828b64-8f0c-45ac-bd05-1144696d6107"
+[2026-04-03 23:31:25.689] [32mINFO[39m: [36mUser registered successfully[39m
+    [35mcorrelationId[39m: "42828b64-8f0c-45ac-bd05-1144696d6107"
+    [35muserId[39m: "c238d8a3-20d5-4c3c-86c6-6e023049ecf8"
+    [35memail[39m: "test-1775239282819@zorvyn.io"
+[2026-04-03 23:31:25.702] [32mINFO[39m: [36mPOST /api/v1/auth/register 201 ΓÇö 2764ms[39m
+    [35mcorrelationId[39m: "42828b64-8f0c-45ac-bd05-1144696d6107"
+    [35mmethod[39m: "POST"
+    [35murl[39m: "/api/v1/auth/register"
+    [35mstatusCode[39m: 201
+    [35mduration[39m: "2764ms"
+    [35mcontentLength[39m: "990"
+    [35mip[39m: "::ffff:127.0.0.1"
+[2026-04-03 23:31:25.878] [33mWARN[39m: [36mPOST /api/v1/auth/register 400 ΓÇö 131ms[39m
+    [35mcorrelationId[39m: "8ccef141-e0a4-4bd8-9490-b167785e37b2"
+    [35mmethod[39m: "POST"
+    [35murl[39m: "/api/v1/auth/register"
+    [35mstatusCode[39m: 400
+    [35mduration[39m: "131ms"
+    [35mcontentLength[39m: "218"
+    [35mip[39m: "::ffff:127.0.0.1"
+[2026-04-03 23:31:26.115] [31mERROR[39m: [36mError: Email already registered[39m
+    [35mcorrelationId[39m: "1ca5ce47-71e8-42cb-a2e5-e7090a81e454"
+    [35mmethod[39m: "POST"
+    [35murl[39m: "/api/v1/auth/register"
+    [35mstatusCode[39m: 409
+    [35mstack[39m: "AppError: Email already registered\n    at AuthService.register (C:\Users\amey\OneDrive\Desktop\Zorvyn\src\modules\auth\auth.service.ts:32:13)\n    at processTicksAndRejections (node:internal/process/task_queues:105:5)\n    at register (C:\Users\amey\OneDrive\Desktop\Zorvyn\src\modules\auth\auth.controller.ts:13:22)"
+    err: {
+      "type": "AppError",
+      "message": "Email already registered",
+      "stack":
+          AppError: Email already registered
+              at AuthService.register (C:\Users\amey\OneDrive\Desktop\Zorvyn\src\modules\auth\auth.service.ts:32:13)
+              at processTicksAndRejections (node:internal/process/task_queues:105:5)
+              at register (C:\Users\amey\OneDrive\Desktop\Zorvyn\src\modules\auth\auth.controller.ts:13:22)
+      "statusCode": 409,
+      "code": "CONFLICT",
+      "name": "AppError"
+    }
+[2026-04-03 23:31:26.122] [33mWARN[39m: [36mPOST /api/v1/auth/register 409 ΓÇö 214ms[39m
+    [35mcorrelationId[39m: "1ca5ce47-71e8-42cb-a2e5-e7090a81e454"
+    [35mmethod[39m: "POST"
+    [35murl[39m: "/api/v1/auth/register"
+    [35mstatusCode[39m: 409
+    [35mduration[39m: "214ms"
+    [35mcontentLength[39m: "82"
+    [35mip[39m: "::ffff:127.0.0.1"
+[2026-04-03 23:31:26.233] [33mWARN[39m: [36mPOST /api/v1/auth/register 400 ΓÇö 83ms[39m
+    [35mcorrelationId[39m: "8e941da3-d816-4141-899f-a4e4e90af04a"
+    [35mmethod[39m: "POST"
+    [35murl[39m: "/api/v1/auth/register"
+    [35mstatusCode[39m: 400
+    [35mduration[39m: "83ms"
+    [35mcontentLength[39m: "146"
+    [35mip[39m: "::ffff:127.0.0.1"
+[2026-04-03 23:31:27.020] [32mINFO[39m: [36mUser logged in[39m
+    [35mcorrelationId[39m: "b44072c7-1761-4e27-af02-5de4ee673467"
+    [35muserId[39m: "37cada04-04a1-46bf-9728-cdf25808a9e0"
+    [35memail[39m: "admin@zorvyn.io"
+[2026-04-03 23:31:27.023] [32mINFO[39m: [36mPOST /api/v1/auth/login 200 ΓÇö 761ms[39m
+    [35mcorrelationId[39m: "b44072c7-1761-4e27-af02-5de4ee673467"
+    [35mmethod[39m: "POST"
+    [35murl[39m: "/api/v1/auth/login"
+    [35mstatusCode[39m: 200
+    [35mduration[39m: "761ms"
+    [35mcontentLength[39m: "945"
+    [35mip[39m: "::ffff:127.0.0.1"
+[2026-04-03 23:31:27.508] [31mERROR[39m: [36mError: Invalid email or password[39m
+    [35mcorrelationId[39m: "889d170b-cc3d-4201-825b-dc278b7f46c6"
+    [35mmethod[39m: "POST"
+    [35murl[39m: "/api/v1/auth/login"
+    [35mstatusCode[39m: 401
+    [35mstack[39m: "AppError: Invalid email or password\n    at AuthService.login (C:\Users\amey\OneDrive\Desktop\Zorvyn\src\modules\auth\auth.service.ts:81:13)\n    at login (C:\Users\amey\OneDrive\Desktop\Zorvyn\src\modules\auth\auth.controller.ts:30:22)"
+    err: {
+      "type": "AppError",
+      "message": "Invalid email or password",
+      "stack":
+          AppError: Invalid email or password
+              at AuthService.login (C:\Users\amey\OneDrive\Desktop\Zorvyn\src\modules\auth\auth.service.ts:81:13)
+              at login (C:\Users\amey\OneDrive\Desktop\Zorvyn\src\modules\auth\auth.controller.ts:30:22)
+      "statusCode": 401,
+      "code": "INVALID_CREDENTIALS",
+      "name": "AppError"
+    }
+[2026-04-03 23:31:27.510] [33mWARN[39m: [36mPOST /api/v1/auth/login 401 ΓÇö 476ms[39m
+    [35mcorrelationId[39m: "889d170b-cc3d-4201-825b-dc278b7f46c6"
+    [35mmethod[39m: "POST"
+    [35murl[39m: "/api/v1/auth/login"
+    [35mstatusCode[39m: 401
+    [35mduration[39m: "476ms"
+    [35mcontentLength[39m: "94"
+    [35mip[39m: "::ffff:127.0.0.1"
+[2026-04-03 23:31:27.710] [31mERROR[39m: [36mError: Invalid email or password[39m
+    [35mcorrelationId[39m: "41239700-894f-4928-baeb-a21803238b03"
+    [35mmethod[39m: "POST"
+    [35murl[39m: "/api/v1/auth/login"
+    [35mstatusCode[39m: 401
+    [35mstack[39m: "AppError: Invalid email or password\n    at AuthService.login (C:\Users\amey\OneDrive\Desktop\Zorvyn\src\modules\auth\auth.service.ts:68:13)\n    at processTicksAndRejections (node:internal/process/task_queues:105:5)\n    at login (C:\Users\amey\OneDrive\Desktop\Zorvyn\src\modules\auth\auth.controller.ts:30:22)"
+    err: {
+      "type": "AppError",
+      "message": "Invalid email or password",
+      "stack":
+          AppError: Invalid email or password
+              at AuthService.login (C:\Users\amey\OneDrive\Desktop\Zorvyn\src\modules\auth\auth.service.ts:68:13)
+              at processTicksAndRejections (node:internal/process/task_queues:105:5)
+              at login (C:\Users\amey\OneDrive\Desktop\Zorvyn\src\modules\auth\auth.controller.ts:30:22)
+      "statusCode": 401,
+      "code": "INVALID_CREDENTIALS",
+      "name": "AppError"
+    }
+[2026-04-03 23:31:27.714] [33mWARN[39m: [36mPOST /api/v1/auth/login 401 ΓÇö 195ms[39m
+    [35mcorrelationId[39m: "41239700-894f-4928-baeb-a21803238b03"
+    [35mmethod[39m: "POST"
+    [35murl[39m: "/api/v1/auth/login"
+    [35mstatusCode[39m: 401
+    [35mduration[39m: "195ms"
+    [35mcontentLength[39m: "94"
+    [35mip[39m: "::ffff:127.0.0.1"
+[2026-04-03 23:31:28.394] [32mINFO[39m: [36mUser logged in[39m
+    [35mcorrelationId[39m: "12214d1f-d2e1-49f2-a468-48a6f7a56b64"
+    [35muserId[39m: "37cada04-04a1-46bf-9728-cdf25808a9e0"
+    [35memail[39m: "admin@zorvyn.io"
+[2026-04-03 23:31:28.397] [32mINFO[39m: [36mPOST /api/v1/auth/login 200 ΓÇö 668ms[39m
+    [35mcorrelationId[39m: "12214d1f-d2e1-49f2-a468-48a6f7a56b64"
+    [35mmethod[39m: "POST"
+    [35murl[39m: "/api/v1/auth/login"
+    [35mstatusCode[39m: 200
+    [35mduration[39m: "668ms"
+    [35mcontentLength[39m: "945"
+    [35mip[39m: "::ffff:127.0.0.1"
+[2026-04-03 23:31:29.003] [32mINFO[39m: [36mToken refreshed[39m
+    [35mcorrelationId[39m: "7bc6c47c-f8c8-4c8d-97b9-24422fd03482"
+    [35muserId[39m: "37cada04-04a1-46bf-9728-cdf25808a9e0"
+[2026-04-03 23:31:29.005] [32mINFO[39m: [36mPOST /api/v1/auth/refresh 200 ΓÇö 584ms[39m
+    [35mcorrelationId[39m: "7bc6c47c-f8c8-4c8d-97b9-24422fd03482"
+    [35mmethod[39m: "POST"
+    [35murl[39m: "/api/v1/auth/refresh"
+    [35mstatusCode[39m: 200
+    [35mduration[39m: "584ms"
+    [35mcontentLength[39m: "699"
+    [35mip[39m: "::ffff:127.0.0.1"
+[2026-04-03 23:31:29.601] [32mINFO[39m: [36mUser logged in[39m
+    [35mcorrelationId[39m: "238a1b5b-a437-41af-b042-8183999a467d"
+    [35muserId[39m: "37cada04-04a1-46bf-9728-cdf25808a9e0"
+    [35memail[39m: "admin@zorvyn.io"
+[2026-04-03 23:31:29.603] [32mINFO[39m: [36mPOST /api/v1/auth/login 200 ΓÇö 585ms[39m
+    [35mcorrelationId[39m: "238a1b5b-a437-41af-b042-8183999a467d"
+    [35mmethod[39m: "POST"
+    [35murl[39m: "/api/v1/auth/login"
+    [35mstatusCode[39m: 200
+    [35mduration[39m: "585ms"
+    [35mcontentLength[39m: "945"
+    [35mip[39m: "::ffff:127.0.0.1"
+[2026-04-03 23:31:30.130] [32mINFO[39m: [36mToken refreshed[39m
+    [35mcorrelationId[39m: "23a1ad9d-7e2f-4bbd-9d0d-1f3c32711763"
+    [35muserId[39m: "37cada04-04a1-46bf-9728-cdf25808a9e0"
+[2026-04-03 23:31:30.133] [32mINFO[39m: [36mPOST /api/v1/auth/refresh 200 ΓÇö 516ms[39m
+    [35mcorrelationId[39m: "23a1ad9d-7e2f-4bbd-9d0d-1f3c32711763"
+    [35mmethod[39m: "POST"
+    [35murl[39m: "/api/v1/auth/refresh"
+    [35mstatusCode[39m: 200
+    [35mduration[39m: "516ms"
+    [35mcontentLength[39m: "699"
+    [35mip[39m: "::ffff:127.0.0.1"
+[2026-04-03 23:31:30.367] [31mERROR[39m: [36mError: Refresh token has been revoked[39m
+    [35mcorrelationId[39m: "7200dc2c-db54-40f4-a7f2-997af338f6b4"
+    [35mmethod[39m: "POST"
+    [35murl[39m: "/api/v1/auth/refresh"
+    [35mstatusCode[39m: 401
+    [35mstack[39m: "AppError: Refresh token has been revoked\n    at AuthService.refreshToken (C:\Users\amey\OneDrive\Desktop\Zorvyn\src\modules\auth\auth.service.ts:119:15)\n    at processTicksAndRejections (node:internal/process/task_queues:105:5)\n    at refresh (C:\Users\amey\OneDrive\Desktop\Zorvyn\src\modules\auth\auth.controller.ts:47:22)"
+    err: {
+      "type": "AppError",
+      "message": "Refresh token has been revoked",
+      "stack":
+          AppError: Refresh token has been revoked
+              at AuthService.refreshToken (C:\Users\amey\OneDrive\Desktop\Zorvyn\src\modules\auth\auth.service.ts:119:15)
+              at processTicksAndRejections (node:internal/process/task_queues:105:5)
+              at refresh (C:\Users\amey\OneDrive\Desktop\Zorvyn\src\modules\auth\auth.controller.ts:47:22)
+      "statusCode": 401,
+      "code": "TOKEN_REVOKED",
+      "name": "AppError"
+    }
+[2026-04-03 23:31:30.370] [33mWARN[39m: [36mPOST /api/v1/auth/refresh 401 ΓÇö 214ms[39m
+    [35mcorrelationId[39m: "7200dc2c-db54-40f4-a7f2-997af338f6b4"
+    [35mmethod[39m: "POST"
+    [35murl[39m: "/api/v1/auth/refresh"
+    [35mstatusCode[39m: 401
+    [35mduration[39m: "214ms"
+    [35mcontentLength[39m: "93"
+    [35mip[39m: "::ffff:127.0.0.1"
+[2026-04-03 23:31:30.461] [33mWARN[39m: [36mGET /api/v1/users 401 ΓÇö 76ms[39m
+    [35mcorrelationId[39m: "c772eb4b-bf69-4f8a-ae18-06184c5bb539"
+    [35mmethod[39m: "GET"
+    [35murl[39m: "/api/v1/users"
+    [35mstatusCode[39m: 401
+    [35mduration[39m: "76ms"
+    [35mcontentLength[39m: "101"
+    [35mip[39m: "::ffff:127.0.0.1"
+[2026-04-03 23:31:30.572] [33mWARN[39m: [36mGET /api/v1/users 401 ΓÇö 95ms[39m
+    [35mcorrelationId[39m: "f94b70cb-bba7-4a83-92a7-edc0405c02b0"
+    [35mmethod[39m: "GET"
+    [35murl[39m: "/api/v1/users"
+    [35mstatusCode[39m: 401
+    [35mduration[39m: "95ms"
+    [35mcontentLength[39m: "82"
+    [35mip[39m: "::ffff:127.0.0.1"
+[2026-04-03 23:31:30.587] [32mINFO[39m: [36mPostgreSQL pool closed[39m
+[2026-04-03 23:31:30.631] [32mINFO[39m: [36mRedis connection closed[39m
+PASS tests/auth.test.ts (10.981 s)
+[2026-04-03 23:31:31.194] [34mDEBUG[39m: [36mRedis client connected[39m
+[2026-04-03 23:31:31.039] [34mDEBUG[39m: [36mRedis connection closed[39m
+(node:2476) Warning: SECURITY WARNING: The SSL modes 
+'prefer', 'require', and 'verify-ca' are treated as 
+aliases for 'verify-full'.
+In the next major version (pg-connection-string v3.0.0 
+and pg v9.0.0), these modes will adopt standard libpq 
+semantics, which have weaker security guarantees.
+
+To prepare for this change:
+- If you want the current behavior, explicitly use 
+'sslmode=verify-full'
+- If you want libpq compatibility now, use 
+'uselibpqcompat=true&sslmode=require'
+
+See 
+https://www.postgresql.org/docs/current/libpq-ssl.html 
+for libpq SSL mode definitions.
+[2026-04-03 23:31:31.988] [34mDEBUG[39m: [36mNew PostgreSQL client connected[39m
+    [35mcorrelationId[39m: "58a5bdbb-d296-48f4-a0a7-ca19ef843090"
+[2026-04-03 23:31:32.533] [32mINFO[39m: [36mUser logged in[39m
+    [35mcorrelationId[39m: "58a5bdbb-d296-48f4-a0a7-ca19ef843090"
+    [35muserId[39m: "37cada04-04a1-46bf-9728-cdf25808a9e0"
+    [35memail[39m: "admin@zorvyn.io"
+[2026-04-03 23:31:32.536] [32mINFO[39m: [36mPOST /api/v1/auth/login 200 ΓÇö 1486ms[39m
+    [35mcorrelationId[39m: "58a5bdbb-d296-48f4-a0a7-ca19ef843090"
+    [35mmethod[39m: "POST"
+    [35murl[39m: "/api/v1/auth/login"
+    [35mstatusCode[39m: 200
+    [35mduration[39m: "1486ms"
+    [35mcontentLength[39m: "945"
+    [35mip[39m: "::ffff:127.0.0.1"
+[2026-04-03 23:31:33.624] [32mINFO[39m: [36mUser logged in[39m
+    [35mcorrelationId[39m: "6077dfb9-a8a3-4634-8878-44112c1d66cf"
+    [35muserId[39m: "48e8fdea-17e4-48cd-9cc8-151d6f10c2b6"
+    [35memail[39m: "analyst@zorvyn.io"
+[2026-04-03 23:31:33.629] [32mINFO[39m: [36mPOST /api/v1/auth/login 200 ΓÇö 1068ms[39m
+    [35mcorrelationId[39m: "6077dfb9-a8a3-4634-8878-44112c1d66cf"
+    [35mmethod[39m: "POST"
+    [35murl[39m: "/api/v1/auth/login"
+    [35mstatusCode[39m: 200
+    [35mduration[39m: "1068ms"
+    [35mcontentLength[39m: "943"
+    [35mip[39m: "::ffff:127.0.0.1"
+[2026-04-03 23:31:34.454] [32mINFO[39m: [36mUser logged in[39m
+    [35mcorrelationId[39m: "454dcae7-c69e-4ec0-8898-3db5ee36ea66"
+    [35muserId[39m: "208db89e-d853-45c4-99e5-6e7256f3c223"
+    [35memail[39m: "viewer@zorvyn.io"
+[2026-04-03 23:31:34.457] [32mINFO[39m: [36mPOST /api/v1/auth/login 200 ΓÇö 804ms[39m
+    [35mcorrelationId[39m: "454dcae7-c69e-4ec0-8898-3db5ee36ea66"
+    [35mmethod[39m: "POST"
+    [35murl[39m: "/api/v1/auth/login"
+    [35mstatusCode[39m: 200
+    [35mduration[39m: "804ms"
+    [35mcontentLength[39m: "942"
+    [35mip[39m: "::ffff:127.0.0.1"
+[2026-04-03 23:31:34.799] [32mINFO[39m: [36mGET /api/v1/users 200 ΓÇö 319ms[39m
+    [35mcorrelationId[39m: "6569d5d5-9725-42e4-8a8a-430a555b9763"
+    [35muserId[39m: "37cada04-04a1-46bf-9728-cdf25808a9e0"
+    [35mmethod[39m: "GET"
+    [35murl[39m: "/api/v1/users"
+    [35mstatusCode[39m: 200
+    [35mduration[39m: "319ms"
+    [35mcontentLength[39m: "1295"
+    [35mip[39m: "::ffff:127.0.0.1"
+[2026-04-03 23:31:34.910] [33mWARN[39m: [36mAccess denied: role 'analyst' not in [admin][39m
+    [35mcorrelationId[39m: "f270b584-fa95-4193-b169-f27bd5d76852"
+    [35muserId[39m: "48e8fdea-17e4-48cd-9cc8-151d6f10c2b6"
+    [35mrole[39m: "analyst"
+    [35mrequiredRoles[39m: [
+      "admin"
+    ]
+    [35mmethod[39m: "GET"
+    [35murl[39m: "/api/v1/users"
+[2026-04-03 23:31:34.916] [33mWARN[39m: [36mGET /api/v1/users 403 ΓÇö 92ms[39m
+    [35mcorrelationId[39m: "f270b584-fa95-4193-b169-f27bd5d76852"
+    [35muserId[39m: "48e8fdea-17e4-48cd-9cc8-151d6f10c2b6"
+    [35mmethod[39m: "GET"
+    [35murl[39m: "/api/v1/users"
+    [35mstatusCode[39m: 403
+    [35mduration[39m: "92ms"
+    [35mcontentLength[39m: "111"
+    [35mip[39m: "::ffff:127.0.0.1"
+[2026-04-03 23:31:35.038] [33mWARN[39m: [36mAccess denied: role 'viewer' not in [admin][39m
+    [35mcorrelationId[39m: "c560eb9b-3759-412b-bd9a-804564a175eb"
+    [35muserId[39m: "208db89e-d853-45c4-99e5-6e7256f3c223"
+    [35mrole[39m: "viewer"
+    [35mrequiredRoles[39m: [
+      "admin"
+    ]
+    [35mmethod[39m: "GET"
+    [35murl[39m: "/api/v1/users"
+[2026-04-03 23:31:35.047] [33mWARN[39m: [36mGET /api/v1/users 403 ΓÇö 105ms[39m
+    [35mcorrelationId[39m: "c560eb9b-3759-412b-bd9a-804564a175eb"
+    [35muserId[39m: "208db89e-d853-45c4-99e5-6e7256f3c223"
+    [35mmethod[39m: "GET"
+    [35murl[39m: "/api/v1/users"
+    [35mstatusCode[39m: 403
+    [35mduration[39m: "105ms"
+    [35mcontentLength[39m: "110"
+    [35mip[39m: "::ffff:127.0.0.1"
+[2026-04-03 23:31:35.168] [34mDEBUG[39m: [36mScope: restricted to department 'marketing'[39m
+    [35mcorrelationId[39m: "374cbe89-cdcf-4313-8c32-225515ea551a"
+    [35muserId[39m: "208db89e-d853-45c4-99e5-6e7256f3c223"
+    [35mrole[39m: "viewer"
+    [35mdepartment[39m: "marketing"
+[2026-04-03 23:31:35.169] [33mWARN[39m: [36mAccess denied: role 'viewer' not in [admin][39m
+    [35mcorrelationId[39m: "374cbe89-cdcf-4313-8c32-225515ea551a"
+    [35muserId[39m: "208db89e-d853-45c4-99e5-6e7256f3c223"
+    [35mrole[39m: "viewer"
+    [35mrequiredRoles[39m: [
+      "admin"
+    ]
+    [35mmethod[39m: "POST"
+    [35murl[39m: "/api/v1/records"
+[2026-04-03 23:31:35.172] [33mWARN[39m: [36mPOST /api/v1/records 403 ΓÇö 89ms[39m
+    [35mcorrelationId[39m: "374cbe89-cdcf-4313-8c32-225515ea551a"
+    [35muserId[39m: "208db89e-d853-45c4-99e5-6e7256f3c223"
+    [35mmethod[39m: "POST"
+    [35murl[39m: "/api/v1/records"
+    [35mstatusCode[39m: 403
+    [35mduration[39m: "89ms"
+    [35mcontentLength[39m: "110"
+    [35mip[39m: "::ffff:127.0.0.1"
+[2026-04-03 23:31:35.282] [34mDEBUG[39m: [36mScope: admin ΓÇö unrestricted access[39m
+    [35mcorrelationId[39m: "cc2d8893-322c-4d34-aa7e-a79bf1821d86"
+    [35muserId[39m: "37cada04-04a1-46bf-9728-cdf25808a9e0"
+    [35mrole[39m: "admin"
+[2026-04-03 23:31:35.805] [34mDEBUG[39m: [36mTransaction BEGIN[39m
+    [35mcorrelationId[39m: "cc2d8893-322c-4d34-aa7e-a79bf1821d86"
+    [35muserId[39m: "37cada04-04a1-46bf-9728-cdf25808a9e0"
+[2026-04-03 23:31:36.219] [34mDEBUG[39m: [36mAudit logged: CREATE on financial_record[39m
+    [35mcorrelationId[39m: "cc2d8893-322c-4d34-aa7e-a79bf1821d86"
+    [35muserId[39m: "37cada04-04a1-46bf-9728-cdf25808a9e0"
+    [35mentity[39m: "financial_record"
+    [35mentityId[39m: "53e82333-dbcb-43f8-8568-ce9dd9449f95"
+    [35maction[39m: "CREATE"
+[2026-04-03 23:31:36.574] [34mDEBUG[39m: [36mTransaction COMMIT[39m
+    [35mcorrelationId[39m: "cc2d8893-322c-4d34-aa7e-a79bf1821d86"
+    [35muserId[39m: "37cada04-04a1-46bf-9728-cdf25808a9e0"
+[2026-04-03 23:31:36.578] [32mINFO[39m: [36mPOST /api/v1/records 201 ΓÇö 1380ms[39m
+    [35mcorrelationId[39m: "cc2d8893-322c-4d34-aa7e-a79bf1821d86"
+    [35muserId[39m: "37cada04-04a1-46bf-9728-cdf25808a9e0"
+    [35mmethod[39m: "POST"
+    [35murl[39m: "/api/v1/records"
+    [35mstatusCode[39m: 201
+    [35mduration[39m: "1380ms"
+    [35mcontentLength[39m: "392"
+    [35mip[39m: "::ffff:127.0.0.1"
+[2026-04-03 23:31:36.998] [34mDEBUG[39m: [36mScope: restricted to department 'marketing'[39m
+    [35mcorrelationId[39m: "f81e6ae4-0982-4a52-82f7-376575e8b740"
+    [35muserId[39m: "208db89e-d853-45c4-99e5-6e7256f3c223"
+    [35mrole[39m: "viewer"
+    [35mdepartment[39m: "marketing"
+[2026-04-03 23:31:37.485] [32mINFO[39m: [36mGET /api/v1/records 200 ΓÇö 891ms[39m
+    [35mcorrelationId[39m: "f81e6ae4-0982-4a52-82f7-376575e8b740"
+    [35muserId[39m: "208db89e-d853-45c4-99e5-6e7256f3c223"
+    [35mmethod[39m: "GET"
+    [35murl[39m: "/api/v1/records"
+    [35mstatusCode[39m: 200
+    [35mduration[39m: "891ms"
+    [35mcontentLength[39m: "7517"
+    [35mip[39m: "::ffff:127.0.0.1"
+[2026-04-03 23:31:37.595] [34mDEBUG[39m: [36mScope: restricted to department 'finance'[39m
+    [35mcorrelationId[39m: "960b4ef7-05fc-4184-8820-9eba3ec5ecd7"
+    [35muserId[39m: "48e8fdea-17e4-48cd-9cc8-151d6f10c2b6"
+    [35mrole[39m: "analyst"
+    [35mdepartment[39m: "finance"
+[2026-04-03 23:31:37.800] [34mDEBUG[39m: [36mDashboard cache SET[39m
+    [35mcorrelationId[39m: "960b4ef7-05fc-4184-8820-9eba3ec5ecd7"
+    [35muserId[39m: "48e8fdea-17e4-48cd-9cc8-151d6f10c2b6"
+    [35mkey[39m: "dashboard:summary:finance"
+    [35mttl[39m: 60
+[2026-04-03 23:31:37.802] [32mINFO[39m: [36mGET /api/v1/dashboard/summary 200 ΓÇö 301ms[39m
+    [35mcorrelationId[39m: "960b4ef7-05fc-4184-8820-9eba3ec5ecd7"
+    [35muserId[39m: "48e8fdea-17e4-48cd-9cc8-151d6f10c2b6"
+    [35mmethod[39m: "GET"
+    [35murl[39m: "/api/v1/dashboard/summary"
+    [35mstatusCode[39m: 200
+    [35mduration[39m: "301ms"
+    [35mcontentLength[39m: "133"
+    [35mip[39m: "::ffff:127.0.0.1"
+[2026-04-03 23:31:37.897] [34mDEBUG[39m: [36mScope: restricted to department 'marketing'[39m
+    [35mcorrelationId[39m: "4d2b8cfa-8681-4865-8e6e-c004a1872e14"
+    [35muserId[39m: "208db89e-d853-45c4-99e5-6e7256f3c223"
+    [35mrole[39m: "viewer"
+    [35mdepartment[39m: "marketing"
+[2026-04-03 23:31:37.899] [33mWARN[39m: [36mAccess denied: role 'viewer' not in [analyst, admin][39m
+    [35mcorrelationId[39m: "4d2b8cfa-8681-4865-8e6e-c004a1872e14"
+    [35muserId[39m: "208db89e-d853-45c4-99e5-6e7256f3c223"
+    [35mrole[39m: "viewer"
+    [35mrequiredRoles[39m: [
+      "analyst",
+      "admin"
+    ]
+    [35mmethod[39m: "GET"
+    [35murl[39m: "/api/v1/dashboard/summary"
+[2026-04-03 23:31:37.902] [33mWARN[39m: [36mGET /api/v1/dashboard/summary 403 ΓÇö 92ms[39m
+    [35mcorrelationId[39m: "4d2b8cfa-8681-4865-8e6e-c004a1872e14"
+    [35muserId[39m: "208db89e-d853-45c4-99e5-6e7256f3c223"
+    [35mmethod[39m: "GET"
+    [35murl[39m: "/api/v1/dashboard/summary"
+    [35mstatusCode[39m: 403
+    [35mduration[39m: "92ms"
+    [35mcontentLength[39m: "110"
+    [35mip[39m: "::ffff:127.0.0.1"
+[2026-04-03 23:31:38.007] [34mDEBUG[39m: [36mScope: restricted to department 'marketing'[39m
+    [35mcorrelationId[39m: "0d773177-a644-4cc2-b8db-85ed88ca45be"
+    [35muserId[39m: "208db89e-d853-45c4-99e5-6e7256f3c223"
+    [35mrole[39m: "viewer"
+    [35mdepartment[39m: "marketing"
+[2026-04-03 23:31:38.121] [32mINFO[39m: [36mGET /api/v1/dashboard/recent-activity 200 ΓÇö 196ms[39m
+    [35mcorrelationId[39m: "0d773177-a644-4cc2-b8db-85ed88ca45be"
+    [35muserId[39m: "208db89e-d853-45c4-99e5-6e7256f3c223"
+    [35mmethod[39m: "GET"
+    [35murl[39m: "/api/v1/dashboard/recent-activity"
+    [35mstatusCode[39m: 200
+    [35mduration[39m: "196ms"
+    [35mcontentLength[39m: "2784"
+    [35mip[39m: "::ffff:127.0.0.1"
+[2026-04-03 23:31:38.231] [34mDEBUG[39m: [36mScope: admin ΓÇö unrestricted access[39m
+    [35mcorrelationId[39m: "b6223c76-d857-4562-a73c-bd9df3e95790"
+    [35muserId[39m: "37cada04-04a1-46bf-9728-cdf25808a9e0"
+    [35mrole[39m: "admin"
+[2026-04-03 23:31:38.538] [32mINFO[39m: [36mGET /api/v1/records 200 ΓÇö 395ms[39m
+    [35mcorrelationId[39m: "b6223c76-d857-4562-a73c-bd9df3e95790"
+    [35muserId[39m: "37cada04-04a1-46bf-9728-cdf25808a9e0"
+    [35mmethod[39m: "GET"
+    [35murl[39m: "/api/v1/records"
+    [35mstatusCode[39m: 200
+    [35mduration[39m: "395ms"
+    [35mcontentLength[39m: "7535"
+    [35mip[39m: "::ffff:127.0.0.1"
+[2026-04-03 23:31:38.649] [34mDEBUG[39m: [36mScope: restricted to department 'marketing'[39m
+    [35mcorrelationId[39m: "9c80fb78-b91b-4f27-81d4-2dee379f21ac"
+    [35muserId[39m: "208db89e-d853-45c4-99e5-6e7256f3c223"
+    [35mrole[39m: "viewer"
+    [35mdepartment[39m: "marketing"
+[2026-04-03 23:31:38.881] [32mINFO[39m: [36mGET /api/v1/records 200 ΓÇö 318ms[39m
+    [35mcorrelationId[39m: "9c80fb78-b91b-4f27-81d4-2dee379f21ac"
+    [35muserId[39m: "208db89e-d853-45c4-99e5-6e7256f3c223"
+    [35mmethod[39m: "GET"
+    [35murl[39m: "/api/v1/records"
+    [35mstatusCode[39m: 200
+    [35mduration[39m: "318ms"
+    [35mcontentLength[39m: "7517"
+    [35mip[39m: "::ffff:127.0.0.1"
+[2026-04-03 23:31:38.979] [34mDEBUG[39m: [36mScope: restricted to department 'finance'[39m
+    [35mcorrelationId[39m: "19d0ab7c-47fc-4cd8-bd96-4ec389ca12a6"
+    [35muserId[39m: "48e8fdea-17e4-48cd-9cc8-151d6f10c2b6"
+    [35mrole[39m: "analyst"
+    [35mdepartment[39m: "finance"
+[2026-04-03 23:31:39.206] [32mINFO[39m: [36mGET /api/v1/records 200 ΓÇö 305ms[39m
+    [35mcorrelationId[39m: "19d0ab7c-47fc-4cd8-bd96-4ec389ca12a6"
+    [35muserId[39m: "48e8fdea-17e4-48cd-9cc8-151d6f10c2b6"
+    [35mmethod[39m: "GET"
+    [35murl[39m: "/api/v1/records"
+    [35mstatusCode[39m: 200
+    [35mduration[39m: "305ms"
+    [35mcontentLength[39m: "7521"
+    [35mip[39m: "::ffff:127.0.0.1"
+[2026-04-03 23:31:39.318] [34mDEBUG[39m: [36mScope: admin ΓÇö unrestricted access[39m
+    [35mcorrelationId[39m: "2423878e-f88f-4a8b-b175-10722eee07f8"
+    [35muserId[39m: "37cada04-04a1-46bf-9728-cdf25808a9e0"
+    [35mrole[39m: "admin"
+[2026-04-03 23:31:39.514] [32mINFO[39m: [36mGET /api/v1/records?limit=1 200 ΓÇö 274ms[39m
+    [35mcorrelationId[39m: "2423878e-f88f-4a8b-b175-10722eee07f8"
+    [35muserId[39m: "37cada04-04a1-46bf-9728-cdf25808a9e0"
+    [35mmethod[39m: "GET"
+    [35murl[39m: "/api/v1/records?limit=1"
+    [35mstatusCode[39m: 200
+    [35mduration[39m: "274ms"
+    [35mcontentLength[39m: "439"
+    [35mip[39m: "::ffff:127.0.0.1"
+[2026-04-03 23:31:39.605] [34mDEBUG[39m: [36mScope: restricted to department 'marketing'[39m
+    [35mcorrelationId[39m: "af676ac1-1fe9-4a81-a2ed-7d20814e0c2c"
+    [35muserId[39m: "208db89e-d853-45c4-99e5-6e7256f3c223"
+    [35mrole[39m: "viewer"
+    [35mdepartment[39m: "marketing"
+[2026-04-03 23:31:39.713] [31mERROR[39m: [36mError: Financial record not found[39m
+    [35mcorrelationId[39m: "af676ac1-1fe9-4a81-a2ed-7d20814e0c2c"
+    [35muserId[39m: "208db89e-d853-45c4-99e5-6e7256f3c223"
+    [35mmethod[39m: "GET"
+    [35murl[39m: "/api/v1/records/46de0f25-828e-42fc-b0f6-fd334735740f"
+    [35mstatusCode[39m: 404
+    [35mstack[39m: "AppError: Financial record not found\n    at RecordService.getById (C:\Users\amey\OneDrive\Desktop\Zorvyn\src\modules\financial-records\record.service.ts:65:13)\n    at processTicksAndRejections (node:internal/process/task_queues:105:5)\n    at getById (C:\Users\amey\OneDrive\Desktop\Zorvyn\src\modules\financial-records\record.controller.ts:55:22)"
+    err: {
+      "type": "AppError",
+      "message": "Financial record not found",
+      "stack":
+          AppError: Financial record not found
+              at RecordService.getById (C:\Users\amey\OneDrive\Desktop\Zorvyn\src\modules\financial-records\record.service.ts:65:13)
+              at processTicksAndRejections (node:internal/process/task_queues:105:5)
+              at getById (C:\Users\amey\OneDrive\Desktop\Zorvyn\src\modules\financial-records\record.controller.ts:55:22)
+      "statusCode": 404,
+      "code": "NOT_FOUND",
+      "name": "AppError"
+    }
+[2026-04-03 23:31:39.715] [33mWARN[39m: [36mGET /api/v1/records/46de0f25-828e-42fc-b0f6-fd334735740f 404 ΓÇö 191ms[39m
+    [35mcorrelationId[39m: "af676ac1-1fe9-4a81-a2ed-7d20814e0c2c"
+    [35muserId[39m: "208db89e-d853-45c4-99e5-6e7256f3c223"
+    [35mmethod[39m: "GET"
+    [35murl[39m: "/api/v1/records/46de0f25-828e-42fc-b0f6-fd334735740f"
+    [35mstatusCode[39m: 404
+    [35mduration[39m: "191ms"
+    [35mcontentLength[39m: "85"
+    [35mip[39m: "::ffff:127.0.0.1"
+[2026-04-03 23:31:39.721] [32mINFO[39m: [36mPostgreSQL pool closed[39m
+PASS tests/rbac-scope.test.ts (9.11 s)
+[2026-04-03 23:31:39.773] [32mINFO[39m: [36mRedis connection closed[39m
+[2026-04-03 23:31:40.284] [34mDEBUG[39m: [36mRedis client connected[39m
+[2026-04-03 23:31:40.118] [34mDEBUG[39m: [36mRedis connection closed[39m
+(node:2476) Warning: SECURITY WARNING: The SSL modes 
+'prefer', 'require', and 'verify-ca' are treated as 
+aliases for 'verify-full'.
+In the next major version (pg-connection-string v3.0.0 
+and pg v9.0.0), these modes will adopt standard libpq 
+semantics, which have weaker security guarantees.
+
+To prepare for this change:
+- If you want the current behavior, explicitly use 
+'sslmode=verify-full'
+- If you want libpq compatibility now, use 
+'uselibpqcompat=true&sslmode=require'
+
+See 
+https://www.postgresql.org/docs/current/libpq-ssl.html 
+for libpq SSL mode definitions.
+[2026-04-03 23:31:41.160] [34mDEBUG[39m: [36mNew PostgreSQL client connected[39m
+    [35mcorrelationId[39m: "46d45a5b-06a5-4385-b23b-89ecf622f267"
+[2026-04-03 23:31:41.721] [32mINFO[39m: [36mUser logged in[39m
+    [35mcorrelationId[39m: "46d45a5b-06a5-4385-b23b-89ecf622f267"
+    [35muserId[39m: "37cada04-04a1-46bf-9728-cdf25808a9e0"
+    [35memail[39m: "admin@zorvyn.io"
+[2026-04-03 23:31:41.725] [32mINFO[39m: [36mPOST /api/v1/auth/login 200 ΓÇö 1592ms[39m
+    [35mcorrelationId[39m: "46d45a5b-06a5-4385-b23b-89ecf622f267"
+    [35mmethod[39m: "POST"
+    [35murl[39m: "/api/v1/auth/login"
+    [35mstatusCode[39m: 200
+    [35mduration[39m: "1592ms"
+    [35mcontentLength[39m: "945"
+    [35mip[39m: "::ffff:127.0.0.1"
+[2026-04-03 23:31:41.863] [34mDEBUG[39m: [36mScope: admin ΓÇö unrestricted access[39m
+    [35mcorrelationId[39m: "1aa59c0a-ddb3-49ef-ae6a-79b9c6050d17"
+    [35muserId[39m: "37cada04-04a1-46bf-9728-cdf25808a9e0"
+    [35mrole[39m: "admin"
+[2026-04-03 23:31:41.980] [34mDEBUG[39m: [36mTransaction BEGIN[39m
+    [35mcorrelationId[39m: "1aa59c0a-ddb3-49ef-ae6a-79b9c6050d17"
+    [35muserId[39m: "37cada04-04a1-46bf-9728-cdf25808a9e0"
+[2026-04-03 23:31:42.210] [34mDEBUG[39m: [36mAudit logged: CREATE on financial_record[39m
+    [35mcorrelationId[39m: "1aa59c0a-ddb3-49ef-ae6a-79b9c6050d17"
+    [35muserId[39m: "37cada04-04a1-46bf-9728-cdf25808a9e0"
+    [35mentity[39m: "financial_record"
+    [35mentityId[39m: "f0c0fdee-07f4-4873-a3fb-b064133d8a14"
+    [35maction[39m: "CREATE"
+[2026-04-03 23:31:42.312] [34mDEBUG[39m: [36mDashboard cache invalidated[39m
+    [35mcorrelationId[39m: "1aa59c0a-ddb3-49ef-ae6a-79b9c6050d17"
+    [35muserId[39m: "37cada04-04a1-46bf-9728-cdf25808a9e0"
+    [35mkeysInvalidated[39m: 1
+[2026-04-03 23:31:42.413] [34mDEBUG[39m: [36mTransaction COMMIT[39m
+    [35mcorrelationId[39m: "1aa59c0a-ddb3-49ef-ae6a-79b9c6050d17"
+    [35muserId[39m: "37cada04-04a1-46bf-9728-cdf25808a9e0"
+[2026-04-03 23:31:42.417] [32mINFO[39m: [36mPOST /api/v1/records 201 ΓÇö 658ms[39m
+    [35mcorrelationId[39m: "1aa59c0a-ddb3-49ef-ae6a-79b9c6050d17"
+    [35muserId[39m: "37cada04-04a1-46bf-9728-cdf25808a9e0"
+    [35mmethod[39m: "POST"
+    [35murl[39m: "/api/v1/records"
+    [35mstatusCode[39m: 201
+    [35mduration[39m: "658ms"
+    [35mcontentLength[39m: "404"
+    [35mip[39m: "::ffff:127.0.0.1"
+[2026-04-03 23:31:42.553] [34mDEBUG[39m: [36mScope: admin ΓÇö unrestricted access[39m
+    [35mcorrelationId[39m: "ea4adcd3-f5f5-49a4-a56e-c840381c8c28"
+    [35muserId[39m: "37cada04-04a1-46bf-9728-cdf25808a9e0"
+    [35mrole[39m: "admin"
+[2026-04-03 23:31:42.577] [31mERROR[39m: [36mError: Amount must be positive[39m
+    [35mcorrelationId[39m: "ea4adcd3-f5f5-49a4-a56e-c840381c8c28"
+    [35muserId[39m: "37cada04-04a1-46bf-9728-cdf25808a9e0"
+    [35mmethod[39m: "POST"
+    [35murl[39m: "/api/v1/records"
+    [35mstatusCode[39m: 400
+    [35mstack[39m: "AppError: Amount must be positive\n    at RecordService.create (C:\Users\amey\OneDrive\Desktop\Zorvyn\src\modules\financial-records\record.service.ts:34:13)\n    at create (C:\Users\amey\OneDrive\Desktop\Zorvyn\src\modules\financial-records\record.controller.ts:15:42)\n    at Layer.handle [as handle_request] (C:\Users\amey\OneDrive\Desktop\Zorvyn\node_modules\express\lib\router\layer.js:95:5)\n    at next (C:\Users\amey\OneDrive\Desktop\Zorvyn\node_modules\express\lib\router\route.js:149:13)\n    at C:\Users\amey\OneDrive\Desktop\Zorvyn\src\middleware\validator.ts:58:5\n    at Layer.handle [as handle_request] (C:\Users\amey\OneDrive\Desktop\Zorvyn\node_modules\express\lib\router\layer.js:95:5)\n    at next (C:\Users\amey\OneDrive\Desktop\Zorvyn\node_modules\express\lib\router\route.js:149:13)\n    at idempotencyMiddleware (C:\Users\amey\OneDrive\Desktop\Zorvyn\src\middleware\idempotency.ts:38:5)\n    at Layer.handle [as handle_request] (C:\Users\amey\OneDrive\Desktop\Zorvyn\node_modules\express\lib\router\layer.js:95:5)\n    at next (C:\Users\amey\OneDrive\Desktop\Zorvyn\node_modules\express\lib\router\route.js:149:13)\n    at C:\Users\amey\OneDrive\Desktop\Zorvyn\src\middleware\authorize.ts:46:5\n    at Layer.handle [as handle_request] (C:\Users\amey\OneDrive\Desktop\Zorvyn\node_modules\express\lib\router\layer.js:95:5)\n    at next (C:\Users\amey\OneDrive\Desktop\Zorvyn\node_modules\express\lib\router\route.js:149:13)\n    at Route.dispatch (C:\Users\amey\OneDrive\Desktop\Zorvyn\node_modules\express\lib\router\route.js:119:3)\n    at Layer.handle [as handle_request] (C:\Users\amey\OneDrive\Desktop\Zorvyn\node_modules\express\lib\router\layer.js:95:5)\n    at C:\Users\amey\OneDrive\Desktop\Zorvyn\node_modules\express\lib\router\index.js:284:15\n    at router.process_params (C:\Users\amey\OneDrive\Desktop\Zorvyn\node_modules\express\lib\router\index.js:346:12)\n    at next (C:\Users\amey\OneDrive\Desktop\Zorvyn\node_modules\express\lib\router\index.js:280:10)\n    at scopeFilter (C:\Users\amey\OneDrive\Desktop\Zorvyn\src\middleware\scopeFilter.ts:49:3)\n    at Layer.handle [as handle_request] (C:\Users\amey\OneDrive\Desktop\Zorvyn\node_modules\express\lib\router\layer.js:95:5)\n    at trim_prefix (C:\Users\amey\OneDrive\Desktop\Zorvyn\node_modules\express\lib\router\index.js:328:13)\n    at C:\Users\amey\OneDrive\Desktop\Zorvyn\node_modules\express\lib\router\index.js:286:9\n    at router.process_params (C:\Users\amey\OneDrive\Desktop\Zorvyn\node_modules\express\lib\router\index.js:346:12)\n    at next (C:\Users\amey\OneDrive\Desktop\Zorvyn\node_modules\express\lib\router\index.js:280:10)\n    at authenticate (C:\Users\amey\OneDrive\Desktop\Zorvyn\src\middleware\authenticate.ts:37:5)\n    at Layer.handle [as handle_request] (C:\Users\amey\OneDrive\Desktop\Zorvyn\node_modules\express\lib\router\layer.js:95:5)\n    at trim_prefix (C:\Users\amey\OneDrive\Desktop\Zorvyn\node_modules\express\lib\router\index.js:328:13)\n    at C:\Users\amey\OneDrive\Desktop\Zorvyn\node_modules\express\lib\router\index.js:286:9\n    at router.process_params (C:\Users\amey\OneDrive\Desktop\Zorvyn\node_modules\express\lib\router\index.js:346:12)\n    at next (C:\Users\amey\OneDrive\Desktop\Zorvyn\node_modules\express\lib\router\index.js:280:10)\n    at router.handle (C:\Users\amey\OneDrive\Desktop\Zorvyn\node_modules\express\lib\router\index.js:175:3)\n    at router (C:\Users\amey\OneDrive\Desktop\Zorvyn\node_modules\express\lib\router\index.js:47:12)\n    at Layer.handle [as handle_request] (C:\Users\amey\OneDrive\Desktop\Zorvyn\node_modules\express\lib\router\layer.js:95:5)\n    at trim_prefix (C:\Users\amey\OneDrive\Desktop\Zorvyn\node_modules\express\lib\router\index.js:328:13)\n    at C:\Users\amey\OneDrive\Desktop\Zorvyn\node_modules\express\lib\router\index.js:286:9\n    at router.process_params (C:\Users\amey\OneDrive\Desktop\Zorvyn\node_modules\express\lib\router\index.js:346:12)\n    at next (C:\Users\amey\OneDrive\Desktop\Zorvyn\node_modules\express\lib\router\index.js:280:10)\n    at rateLimiter (C:\Users\amey\OneDrive\Desktop\Zorvyn\src\middleware\rateLimiter.ts:46:5)\n    at processTicksAndRejections (node:internal/process/task_queues:105:5)"
+    err: {
+      "type": "AppError",
+      "message": "Amount must be positive",
+      "stack":
+          AppError: Amount must be positive
+              at RecordService.create (C:\Users\amey\OneDrive\Desktop\Zorvyn\src\modules\financial-records\record.service.ts:34:13)
+              at create (C:\Users\amey\OneDrive\Desktop\Zorvyn\src\modules\financial-records\record.controller.ts:15:42)
+              at Layer.handle [as handle_request] (C:\Users\amey\OneDrive\Desktop\Zorvyn\node_modules\express\lib\router\layer.js:95:5)
+              at next (C:\Users\amey\OneDrive\Desktop\Zorvyn\node_modules\express\lib\router\route.js:149:13)
+              at C:\Users\amey\OneDrive\Desktop\Zorvyn\src\middleware\validator.ts:58:5
+              at Layer.handle [as handle_request] (C:\Users\amey\OneDrive\Desktop\Zorvyn\node_modules\express\lib\router\layer.js:95:5)
+              at next (C:\Users\amey\OneDrive\Desktop\Zorvyn\node_modules\express\lib\router\route.js:149:13)
+              at idempotencyMiddleware (C:\Users\amey\OneDrive\Desktop\Zorvyn\src\middleware\idempotency.ts:38:5)
+              at Layer.handle [as handle_request] (C:\Users\amey\OneDrive\Desktop\Zorvyn\node_modules\express\lib\router\layer.js:95:5)
+              at next (C:\Users\amey\OneDrive\Desktop\Zorvyn\node_modules\express\lib\router\route.js:149:13)
+              at C:\Users\amey\OneDrive\Desktop\Zorvyn\src\middleware\authorize.ts:46:5
+              at Layer.handle [as handle_request] (C:\Users\amey\OneDrive\Desktop\Zorvyn\node_modules\express\lib\router\layer.js:95:5)
+              at next (C:\Users\amey\OneDrive\Desktop\Zorvyn\node_modules\express\lib\router\route.js:149:13)
+              at Route.dispatch (C:\Users\amey\OneDrive\Desktop\Zorvyn\node_modules\express\lib\router\route.js:119:3)
+              at Layer.handle [as handle_request] (C:\Users\amey\OneDrive\Desktop\Zorvyn\node_modules\express\lib\router\layer.js:95:5)
+              at C:\Users\amey\OneDrive\Desktop\Zorvyn\node_modules\express\lib\router\index.js:284:15
+              at router.process_params (C:\Users\amey\OneDrive\Desktop\Zorvyn\node_modules\express\lib\router\index.js:346:12)
+              at next (C:\Users\amey\OneDrive\Desktop\Zorvyn\node_modules\express\lib\router\index.js:280:10)
+              at scopeFilter (C:\Users\amey\OneDrive\Desktop\Zorvyn\src\middleware\scopeFilter.ts:49:3)
+              at Layer.handle [as handle_request] (C:\Users\amey\OneDrive\Desktop\Zorvyn\node_modules\express\lib\router\layer.js:95:5)
+              at trim_prefix (C:\Users\amey\OneDrive\Desktop\Zorvyn\node_modules\express\lib\router\index.js:328:13)
+              at C:\Users\amey\OneDrive\Desktop\Zorvyn\node_modules\express\lib\router\index.js:286:9
+              at router.process_params (C:\Users\amey\OneDrive\Desktop\Zorvyn\node_modules\express\lib\router\index.js:346:12)
+              at next (C:\Users\amey\OneDrive\Desktop\Zorvyn\node_modules\express\lib\router\index.js:280:10)
+              at authenticate (C:\Users\amey\OneDrive\Desktop\Zorvyn\src\middleware\authenticate.ts:37:5)
+              at Layer.handle [as handle_request] (C:\Users\amey\OneDrive\Desktop\Zorvyn\node_modules\express\lib\router\layer.js:95:5)
+              at trim_prefix (C:\Users\amey\OneDrive\Desktop\Zorvyn\node_modules\express\lib\router\index.js:328:13)
+              at C:\Users\amey\OneDrive\Desktop\Zorvyn\node_modules\express\lib\router\index.js:286:9
+              at router.process_params (C:\Users\amey\OneDrive\Desktop\Zorvyn\node_modules\express\lib\router\index.js:346:12)
+              at next (C:\Users\amey\OneDrive\Desktop\Zorvyn\node_modules\express\lib\router\index.js:280:10)
+              at router.handle (C:\Users\amey\OneDrive\Desktop\Zorvyn\node_modules\express\lib\router\index.js:175:3)
+              at router (C:\Users\amey\OneDrive\Desktop\Zorvyn\node_modules\express\lib\router\index.js:47:12)
+              at Layer.handle [as handle_request] (C:\Users\amey\OneDrive\Desktop\Zorvyn\node_modules\express\lib\router\layer.js:95:5)
+              at trim_prefix (C:\Users\amey\OneDrive\Desktop\Zorvyn\node_modules\express\lib\router\index.js:328:13)
+              at C:\Users\amey\OneDrive\Desktop\Zorvyn\node_modules\express\lib\router\index.js:286:9
+              at router.process_params (C:\Users\amey\OneDrive\Desktop\Zorvyn\node_modules\express\lib\router\index.js:346:12)
+              at next (C:\Users\amey\OneDrive\Desktop\Zorvyn\node_modules\express\lib\router\index.js:280:10)
+              at rateLimiter (C:\Users\amey\OneDrive\Desktop\Zorvyn\src\middleware\rateLimiter.ts:46:5)
+              at processTicksAndRejections (node:internal/process/task_queues:105:5)
+      "statusCode": 400,
+      "code": "INVALID_AMOUNT",
+      "name": "AppError"
+    }
+[2026-04-03 23:31:42.581] [33mWARN[39m: [36mPOST /api/v1/records 400 ΓÇö 137ms[39m
+    [35mcorrelationId[39m: "ea4adcd3-f5f5-49a4-a56e-c840381c8c28"
+    [35muserId[39m: "37cada04-04a1-46bf-9728-cdf25808a9e0"
+    [35mmethod[39m: "POST"
+    [35murl[39m: "/api/v1/records"
+    [35mstatusCode[39m: 400
+    [35mduration[39m: "137ms"
+    [35mcontentLength[39m: "87"
+    [35mip[39m: "::ffff:127.0.0.1"
+[2026-04-03 23:31:42.703] [34mDEBUG[39m: [36mScope: admin ΓÇö unrestricted access[39m
+    [35mcorrelationId[39m: "837515b9-7ae0-444e-aa89-479fa51db7c1"
+    [35muserId[39m: "37cada04-04a1-46bf-9728-cdf25808a9e0"
+    [35mrole[39m: "admin"
+[2026-04-03 23:31:42.708] [33mWARN[39m: [36mPOST /api/v1/records 400 ΓÇö 103ms[39m
+    [35mcorrelationId[39m: "837515b9-7ae0-444e-aa89-479fa51db7c1"
+    [35muserId[39m: "37cada04-04a1-46bf-9728-cdf25808a9e0"
+    [35mmethod[39m: "POST"
+    [35murl[39m: "/api/v1/records"
+    [35mstatusCode[39m: 400
+    [35mduration[39m: "103ms"
+    [35mcontentLength[39m: "148"
+    [35mip[39m: "::ffff:127.0.0.1"
+[2026-04-03 23:31:42.842] [34mDEBUG[39m: [36mScope: admin ΓÇö unrestricted access[39m
+    [35mcorrelationId[39m: "26d77bb7-f81c-4162-a890-67431183c3fa"
+    [35muserId[39m: "37cada04-04a1-46bf-9728-cdf25808a9e0"
+    [35mrole[39m: "admin"
+[2026-04-03 23:31:42.848] [33mWARN[39m: [36mPOST /api/v1/records 400 ΓÇö 113ms[39m
+    [35mcorrelationId[39m: "26d77bb7-f81c-4162-a890-67431183c3fa"
+    [35muserId[39m: "37cada04-04a1-46bf-9728-cdf25808a9e0"
+    [35mmethod[39m: "POST"
+    [35murl[39m: "/api/v1/records"
+    [35mstatusCode[39m: 400
+    [35mduration[39m: "113ms"
+    [35mcontentLength[39m: "160"
+    [35mip[39m: "::ffff:127.0.0.1"
+[2026-04-03 23:31:42.971] [34mDEBUG[39m: [36mScope: admin ΓÇö unrestricted access[39m
+    [35mcorrelationId[39m: "c0aa20da-3d40-4301-97d8-1ce2849ce0e0"
+    [35muserId[39m: "37cada04-04a1-46bf-9728-cdf25808a9e0"
+    [35mrole[39m: "admin"
+[2026-04-03 23:31:43.203] [32mINFO[39m: [36mGET /api/v1/records?page=1&limit=5 200 ΓÇö 335ms[39m
+    [35mcorrelationId[39m: "c0aa20da-3d40-4301-97d8-1ce2849ce0e0"
+    [35muserId[39m: "37cada04-04a1-46bf-9728-cdf25808a9e0"
+    [35mmethod[39m: "GET"
+    [35murl[39m: "/api/v1/records?page=1&limit=5"
+    [35mstatusCode[39m: 200
+    [35mduration[39m: "335ms"
+    [35mcontentLength[39m: "1926"
+    [35mip[39m: "::ffff:127.0.0.1"
+[2026-04-03 23:31:43.333] [34mDEBUG[39m: [36mScope: admin ΓÇö unrestricted access[39m
+    [35mcorrelationId[39m: "8cb34899-3895-43d3-b280-86d87dceda8a"
+    [35muserId[39m: "37cada04-04a1-46bf-9728-cdf25808a9e0"
+    [35mrole[39m: "admin"
+[2026-04-03 23:31:43.662] [32mINFO[39m: [36mGET /api/v1/records?type=income 200 ΓÇö 434ms[39m
+    [35mcorrelationId[39m: "8cb34899-3895-43d3-b280-86d87dceda8a"
+    [35muserId[39m: "37cada04-04a1-46bf-9728-cdf25808a9e0"
+    [35mmethod[39m: "GET"
+    [35murl[39m: "/api/v1/records?type=income"
+    [35mstatusCode[39m: 200
+    [35mduration[39m: "434ms"
+    [35mcontentLength[39m: "7536"
+    [35mip[39m: "::ffff:127.0.0.1"
+[2026-04-03 23:31:43.801] [34mDEBUG[39m: [36mScope: admin ΓÇö unrestricted access[39m
+    [35mcorrelationId[39m: "33be1b26-f6c2-4a7b-8119-89b32277d690"
+    [35muserId[39m: "37cada04-04a1-46bf-9728-cdf25808a9e0"
+    [35mrole[39m: "admin"
+[2026-04-03 23:31:44.024] [32mINFO[39m: [36mGET /api/v1/records?category=integration-test 200 ΓÇö 334ms[39m
+    [35mcorrelationId[39m: "33be1b26-f6c2-4a7b-8119-89b32277d690"
+    [35muserId[39m: "37cada04-04a1-46bf-9728-cdf25808a9e0"
+    [35mmethod[39m: "GET"
+    [35murl[39m: "/api/v1/records?category=integration-test"
+    [35mstatusCode[39m: 200
+    [35mduration[39m: "334ms"
+    [35mcontentLength[39m: "460"
+    [35mip[39m: "::ffff:127.0.0.1"
+[2026-04-03 23:31:44.162] [34mDEBUG[39m: [36mScope: admin ΓÇö unrestricted access[39m
+    [35mcorrelationId[39m: "447f1471-c9f6-4b5c-bae9-de81c4ef6e38"
+    [35muserId[39m: "37cada04-04a1-46bf-9728-cdf25808a9e0"
+    [35mrole[39m: "admin"
+[2026-04-03 23:31:44.272] [32mINFO[39m: [36mGET /api/v1/records/f0c0fdee-07f4-4873-a3fb-b064133d8a14 200 ΓÇö 220ms[39m
+    [35mcorrelationId[39m: "447f1471-c9f6-4b5c-bae9-de81c4ef6e38"
+    [35muserId[39m: "37cada04-04a1-46bf-9728-cdf25808a9e0"
+    [35mmethod[39m: "GET"
+    [35murl[39m: "/api/v1/records/f0c0fdee-07f4-4873-a3fb-b064133d8a14"
+    [35mstatusCode[39m: 200
+    [35mduration[39m: "220ms"
+    [35mcontentLength[39m: "404"
+    [35mip[39m: "::ffff:127.0.0.1"
+[2026-04-03 23:31:44.412] [34mDEBUG[39m: [36mScope: admin ΓÇö unrestricted access[39m
+    [35mcorrelationId[39m: "6620c235-673d-4848-8e0e-87dedb49369c"
+    [35muserId[39m: "37cada04-04a1-46bf-9728-cdf25808a9e0"
+    [35mrole[39m: "admin"
+[2026-04-03 23:31:44.623] [31mERROR[39m: [36mError: Financial record not found[39m
+    [35mcorrelationId[39m: "6620c235-673d-4848-8e0e-87dedb49369c"
+    [35muserId[39m: "37cada04-04a1-46bf-9728-cdf25808a9e0"
+    [35mmethod[39m: "GET"
+    [35murl[39m: "/api/v1/records/00000000-0000-0000-0000-000000000000"
+    [35mstatusCode[39m: 404
+    [35mstack[39m: "AppError: Financial record not found\n    at RecordService.getById (C:\Users\amey\OneDrive\Desktop\Zorvyn\src\modules\financial-records\record.service.ts:65:13)\n    at processTicksAndRejections (node:internal/process/task_queues:105:5)\n    at getById (C:\Users\amey\OneDrive\Desktop\Zorvyn\src\modules\financial-records\record.controller.ts:55:22)"
+    err: {
+      "type": "AppError",
+      "message": "Financial record not found",
+      "stack":
+          AppError: Financial record not found
+              at RecordService.getById (C:\Users\amey\OneDrive\Desktop\Zorvyn\src\modules\financial-records\record.service.ts:65:13)
+              at processTicksAndRejections (node:internal/process/task_queues:105:5)
+              at getById (C:\Users\amey\OneDrive\Desktop\Zorvyn\src\modules\financial-records\record.controller.ts:55:22)
+      "statusCode": 404,
+      "code": "NOT_FOUND",
+      "name": "AppError"
+    }
+[2026-04-03 23:31:44.629] [33mWARN[39m: [36mGET /api/v1/records/00000000-0000-0000-0000-000000000000 404 ΓÇö 333ms[39m
+    [35mcorrelationId[39m: "6620c235-673d-4848-8e0e-87dedb49369c"
+    [35muserId[39m: "37cada04-04a1-46bf-9728-cdf25808a9e0"
+    [35mmethod[39m: "GET"
+    [35murl[39m: "/api/v1/records/00000000-0000-0000-0000-000000000000"
+    [35mstatusCode[39m: 404
+    [35mduration[39m: "333ms"
+    [35mcontentLength[39m: "85"
+    [35mip[39m: "::ffff:127.0.0.1"
+[2026-04-03 23:31:45.003] [34mDEBUG[39m: [36mScope: admin ΓÇö unrestricted access[39m
+    [35mcorrelationId[39m: "0a0a1104-ecb2-45bf-a670-a3be54f04649"
+    [35muserId[39m: "37cada04-04a1-46bf-9728-cdf25808a9e0"
+    [35mrole[39m: "admin"
+[2026-04-03 23:31:45.112] [34mDEBUG[39m: [36mTransaction BEGIN[39m
+    [35mcorrelationId[39m: "0a0a1104-ecb2-45bf-a670-a3be54f04649"
+    [35muserId[39m: "37cada04-04a1-46bf-9728-cdf25808a9e0"
+[2026-04-03 23:31:45.432] [34mDEBUG[39m: [36mAudit logged: UPDATE on financial_record[39m
+    [35mcorrelationId[39m: "0a0a1104-ecb2-45bf-a670-a3be54f04649"
+    [35muserId[39m: "37cada04-04a1-46bf-9728-cdf25808a9e0"
+    [35mentity[39m: "financial_record"
+    [35mentityId[39m: "f0c0fdee-07f4-4873-a3fb-b064133d8a14"
+    [35maction[39m: "UPDATE"
+[2026-04-03 23:31:45.571] [34mDEBUG[39m: [36mTransaction COMMIT[39m
+    [35mcorrelationId[39m: "0a0a1104-ecb2-45bf-a670-a3be54f04649"
+    [35muserId[39m: "37cada04-04a1-46bf-9728-cdf25808a9e0"
+[2026-04-03 23:31:45.576] [32mINFO[39m: [36mPUT /api/v1/records/f0c0fdee-07f4-4873-a3fb-b064133d8a14 200 ΓÇö 919ms[39m
+    [35mcorrelationId[39m: "0a0a1104-ecb2-45bf-a670-a3be54f04649"
+    [35muserId[39m: "37cada04-04a1-46bf-9728-cdf25808a9e0"
+    [35mmethod[39m: "PUT"
+    [35murl[39m: "/api/v1/records/f0c0fdee-07f4-4873-a3fb-b064133d8a14"
+    [35mstatusCode[39m: 200
+    [35mduration[39m: "919ms"
+    [35mcontentLength[39m: "434"
+    [35mip[39m: "::ffff:127.0.0.1"
+[2026-04-03 23:31:45.681] [34mDEBUG[39m: [36mScope: admin ΓÇö unrestricted access[39m
+    [35mcorrelationId[39m: "8d2a70f3-af0a-4183-b6d1-5296d5f428ea"
+    [35muserId[39m: "37cada04-04a1-46bf-9728-cdf25808a9e0"
+    [35mrole[39m: "admin"
+[2026-04-03 23:31:45.788] [34mDEBUG[39m: [36mTransaction BEGIN[39m
+    [35mcorrelationId[39m: "8d2a70f3-af0a-4183-b6d1-5296d5f428ea"
+    [35muserId[39m: "37cada04-04a1-46bf-9728-cdf25808a9e0"
+[2026-04-03 23:31:46.125] [34mDEBUG[39m: [36mAudit logged: DELETE on financial_record[39m
+    [35mcorrelationId[39m: "8d2a70f3-af0a-4183-b6d1-5296d5f428ea"
+    [35muserId[39m: "37cada04-04a1-46bf-9728-cdf25808a9e0"
+    [35mentity[39m: "financial_record"
+    [35mentityId[39m: "f0c0fdee-07f4-4873-a3fb-b064133d8a14"
+    [35maction[39m: "DELETE"
+[2026-04-03 23:31:46.257] [34mDEBUG[39m: [36mTransaction COMMIT[39m
+    [35mcorrelationId[39m: "8d2a70f3-af0a-4183-b6d1-5296d5f428ea"
+    [35muserId[39m: "37cada04-04a1-46bf-9728-cdf25808a9e0"
+[2026-04-03 23:31:46.263] [32mINFO[39m: [36mDELETE /api/v1/records/f0c0fdee-07f4-4873-a3fb-b064133d8a14 200 ΓÇö 665ms[39m
+    [35mcorrelationId[39m: "8d2a70f3-af0a-4183-b6d1-5296d5f428ea"
+    [35muserId[39m: "37cada04-04a1-46bf-9728-cdf25808a9e0"
+    [35mmethod[39m: "DELETE"
+    [35murl[39m: "/api/v1/records/f0c0fdee-07f4-4873-a3fb-b064133d8a14"
+    [35mstatusCode[39m: 200
+    [35mduration[39m: "665ms"
+    [35mcontentLength[39m: "65"
+    [35mip[39m: "::ffff:127.0.0.1"
+[2026-04-03 23:31:46.376] [34mDEBUG[39m: [36mScope: admin ΓÇö unrestricted access[39m
+    [35mcorrelationId[39m: "4ce62cd2-559d-4c53-aa1d-b0e2545b0f7e"
+    [35muserId[39m: "37cada04-04a1-46bf-9728-cdf25808a9e0"
+    [35mrole[39m: "admin"
+[2026-04-03 23:31:46.488] [31mERROR[39m: [36mError: Financial record not found[39m
+    [35mcorrelationId[39m: "4ce62cd2-559d-4c53-aa1d-b0e2545b0f7e"
+    [35muserId[39m: "37cada04-04a1-46bf-9728-cdf25808a9e0"
+    [35mmethod[39m: "GET"
+    [35murl[39m: "/api/v1/records/f0c0fdee-07f4-4873-a3fb-b064133d8a14"
+    [35mstatusCode[39m: 404
+    [35mstack[39m: "AppError: Financial record not found\n    at RecordService.getById (C:\Users\amey\OneDrive\Desktop\Zorvyn\src\modules\financial-records\record.service.ts:65:13)\n    at processTicksAndRejections (node:internal/process/task_queues:105:5)\n    at getById (C:\Users\amey\OneDrive\Desktop\Zorvyn\src\modules\financial-records\record.controller.ts:55:22)"
+    err: {
+      "type": "AppError",
+      "message": "Financial record not found",
+      "stack":
+          AppError: Financial record not found
+              at RecordService.getById (C:\Users\amey\OneDrive\Desktop\Zorvyn\src\modules\financial-records\record.service.ts:65:13)
+              at processTicksAndRejections (node:internal/process/task_queues:105:5)
+              at getById (C:\Users\amey\OneDrive\Desktop\Zorvyn\src\modules\financial-records\record.controller.ts:55:22)
+      "statusCode": 404,
+      "code": "NOT_FOUND",
+      "name": "AppError"
+    }
+[2026-04-03 23:31:46.491] [33mWARN[39m: [36mGET /api/v1/records/f0c0fdee-07f4-4873-a3fb-b064133d8a14 404 ΓÇö 210ms[39m
+    [35mcorrelationId[39m: "4ce62cd2-559d-4c53-aa1d-b0e2545b0f7e"
+    [35muserId[39m: "37cada04-04a1-46bf-9728-cdf25808a9e0"
+    [35mmethod[39m: "GET"
+    [35murl[39m: "/api/v1/records/f0c0fdee-07f4-4873-a3fb-b064133d8a14"
+    [35mstatusCode[39m: 404
+    [35mduration[39m: "210ms"
+    [35mcontentLength[39m: "85"
+    [35mip[39m: "::ffff:127.0.0.1"
+[2026-04-03 23:31:46.504] [32mINFO[39m: [36mPostgreSQL pool closed[39m
+PASS tests/records.test.ts (6.762 s)
+[2026-04-03 23:31:46.545] [32mINFO[39m: [36mRedis connection closed[39m
+[2026-04-03 23:31:47.058] [34mDEBUG[39m: [36mRedis connection closed[39m
+[2026-04-03 23:31:47.233] [34mDEBUG[39m: [36mRedis client connected[39m
+(node:2476) Warning: SECURITY WARNING: The SSL modes 
+'prefer', 'require', and 'verify-ca' are treated as 
+aliases for 'verify-full'.
+In the next major version (pg-connection-string v3.0.0 
+and pg v9.0.0), these modes will adopt standard libpq 
+semantics, which have weaker security guarantees.
+
+To prepare for this change:
+- If you want the current behavior, explicitly use 
+'sslmode=verify-full'
+- If you want libpq compatibility now, use 
+'uselibpqcompat=true&sslmode=require'
+
+See 
+https://www.postgresql.org/docs/current/libpq-ssl.html 
+for libpq SSL mode definitions.
+[2026-04-03 23:31:48.051] [34mDEBUG[39m: [36mNew PostgreSQL client connected[39m
+    [35mcorrelationId[39m: "df9209a3-2cd5-47ea-862a-883bfbc1eb7b"
+[2026-04-03 23:31:48.642] [32mINFO[39m: [36mUser logged in[39m
+    [35mcorrelationId[39m: "df9209a3-2cd5-47ea-862a-883bfbc1eb7b"
+    [35muserId[39m: "37cada04-04a1-46bf-9728-cdf25808a9e0"
+    [35memail[39m: "admin@zorvyn.io"
+[2026-04-03 23:31:48.647] [32mINFO[39m: [36mPOST /api/v1/auth/login 200 ΓÇö 1582ms[39m
+    [35mcorrelationId[39m: "df9209a3-2cd5-47ea-862a-883bfbc1eb7b"
+    [35mmethod[39m: "POST"
+    [35murl[39m: "/api/v1/auth/login"
+    [35mstatusCode[39m: 200
+    [35mduration[39m: "1582ms"
+    [35mcontentLength[39m: "945"
+    [35mip[39m: "::ffff:127.0.0.1"
+[2026-04-03 23:31:49.524] [32mINFO[39m: [36mUser logged in[39m
+    [35mcorrelationId[39m: "6f745974-e267-46ea-bb73-16df080743d1"
+    [35muserId[39m: "48e8fdea-17e4-48cd-9cc8-151d6f10c2b6"
+    [35memail[39m: "analyst@zorvyn.io"
+[2026-04-03 23:31:49.530] [32mINFO[39m: [36mPOST /api/v1/auth/login 200 ΓÇö 858ms[39m
+    [35mcorrelationId[39m: "6f745974-e267-46ea-bb73-16df080743d1"
+    [35mmethod[39m: "POST"
+    [35murl[39m: "/api/v1/auth/login"
+    [35mstatusCode[39m: 200
+    [35mduration[39m: "858ms"
+    [35mcontentLength[39m: "943"
+    [35mip[39m: "::ffff:127.0.0.1"
+[2026-04-03 23:31:49.647] [34mDEBUG[39m: [36mScope: admin ΓÇö unrestricted access[39m
+    [35mcorrelationId[39m: "a9539179-6dd4-435c-bb6a-5a3177c3d485"
+    [35muserId[39m: "37cada04-04a1-46bf-9728-cdf25808a9e0"
+    [35mrole[39m: "admin"
+[2026-04-03 23:31:49.828] [34mDEBUG[39m: [36mDashboard cache SET[39m
+    [35mcorrelationId[39m: "a9539179-6dd4-435c-bb6a-5a3177c3d485"
+    [35muserId[39m: "37cada04-04a1-46bf-9728-cdf25808a9e0"
+    [35mkey[39m: "dashboard:summary:all"
+    [35mttl[39m: 60
+[2026-04-03 23:31:49.832] [32mINFO[39m: [36mGET /api/v1/dashboard/summary 200 ΓÇö 269ms[39m
+    [35mcorrelationId[39m: "a9539179-6dd4-435c-bb6a-5a3177c3d485"
+    [35muserId[39m: "37cada04-04a1-46bf-9728-cdf25808a9e0"
+    [35mmethod[39m: "GET"
+    [35murl[39m: "/api/v1/dashboard/summary"
+    [35mstatusCode[39m: 200
+    [35mduration[39m: "269ms"
+    [35mcontentLength[39m: "137"
+    [35mip[39m: "::ffff:127.0.0.1"
+[2026-04-03 23:31:49.936] [34mDEBUG[39m: [36mScope: admin ΓÇö unrestricted access[39m
+    [35mcorrelationId[39m: "3639ff77-ee57-41b9-a573-a06d6bcc3afd"
+    [35muserId[39m: "37cada04-04a1-46bf-9728-cdf25808a9e0"
+    [35mrole[39m: "admin"
+[2026-04-03 23:31:49.974] [34mDEBUG[39m: [36mDashboard cache HIT[39m
+    [35mcorrelationId[39m: "3639ff77-ee57-41b9-a573-a06d6bcc3afd"
+    [35muserId[39m: "37cada04-04a1-46bf-9728-cdf25808a9e0"
+    [35mkey[39m: "dashboard:summary:all"
+[2026-04-03 23:31:49.978] [32mINFO[39m: [36mGET /api/v1/dashboard/summary 200 ΓÇö 119ms[39m
+    [35mcorrelationId[39m: "3639ff77-ee57-41b9-a573-a06d6bcc3afd"
+    [35muserId[39m: "37cada04-04a1-46bf-9728-cdf25808a9e0"
+    [35mmethod[39m: "GET"
+    [35murl[39m: "/api/v1/dashboard/summary"
+    [35mstatusCode[39m: 200
+    [35mduration[39m: "119ms"
+    [35mcontentLength[39m: "137"
+    [35mip[39m: "::ffff:127.0.0.1"
+[2026-04-03 23:31:50.079] [34mDEBUG[39m: [36mScope: restricted to department 'finance'[39m
+    [35mcorrelationId[39m: "8df0d1e3-3bbe-4093-94b1-0ad646ce14cc"
+    [35muserId[39m: "48e8fdea-17e4-48cd-9cc8-151d6f10c2b6"
+    [35mrole[39m: "analyst"
+    [35mdepartment[39m: "finance"
+[2026-04-03 23:31:50.259] [34mDEBUG[39m: [36mDashboard cache SET[39m
+    [35mcorrelationId[39m: "8df0d1e3-3bbe-4093-94b1-0ad646ce14cc"
+    [35muserId[39m: "48e8fdea-17e4-48cd-9cc8-151d6f10c2b6"
+    [35mkey[39m: "dashboard:summary:finance"
+    [35mttl[39m: 60
+[2026-04-03 23:31:50.264] [32mINFO[39m: [36mGET /api/v1/dashboard/summary 200 ΓÇö 267ms[39m
+    [35mcorrelationId[39m: "8df0d1e3-3bbe-4093-94b1-0ad646ce14cc"
+    [35muserId[39m: "48e8fdea-17e4-48cd-9cc8-151d6f10c2b6"
+    [35mmethod[39m: "GET"
+    [35murl[39m: "/api/v1/dashboard/summary"
+    [35mstatusCode[39m: 200
+    [35mduration[39m: "267ms"
+    [35mcontentLength[39m: "133"
+    [35mip[39m: "::ffff:127.0.0.1"
+[2026-04-03 23:31:50.361] [34mDEBUG[39m: [36mScope: admin ΓÇö unrestricted access[39m
+    [35mcorrelationId[39m: "ad98c5f1-c998-42ed-b6c6-2b49030c6cad"
+    [35muserId[39m: "37cada04-04a1-46bf-9728-cdf25808a9e0"
+    [35mrole[39m: "admin"
+[2026-04-03 23:31:50.554] [34mDEBUG[39m: [36mDashboard cache SET[39m
+    [35mcorrelationId[39m: "ad98c5f1-c998-42ed-b6c6-2b49030c6cad"
+    [35muserId[39m: "37cada04-04a1-46bf-9728-cdf25808a9e0"
+    [35mkey[39m: "dashboard:categories:all"
+    [35mttl[39m: 60
+[2026-04-03 23:31:50.557] [32mINFO[39m: [36mGET /api/v1/dashboard/category-breakdown 200 ΓÇö 270ms[39m
+    [35mcorrelationId[39m: "ad98c5f1-c998-42ed-b6c6-2b49030c6cad"
+    [35muserId[39m: "37cada04-04a1-46bf-9728-cdf25808a9e0"
+    [35mmethod[39m: "GET"
+    [35murl[39m: "/api/v1/dashboard/category-breakdown"
+    [35mstatusCode[39m: 200
+    [35mduration[39m: "270ms"
+    [35mcontentLength[39m: "1384"
+    [35mip[39m: "::ffff:127.0.0.1"
+[2026-04-03 23:31:50.650] [34mDEBUG[39m: [36mScope: admin ΓÇö unrestricted access[39m
+    [35mcorrelationId[39m: "fc90227b-13bc-4e68-94af-6a72fe7a4801"
+    [35muserId[39m: "37cada04-04a1-46bf-9728-cdf25808a9e0"
+    [35mrole[39m: "admin"
+[2026-04-03 23:31:50.844] [34mDEBUG[39m: [36mDashboard cache SET[39m
+    [35mcorrelationId[39m: "fc90227b-13bc-4e68-94af-6a72fe7a4801"
+    [35muserId[39m: "37cada04-04a1-46bf-9728-cdf25808a9e0"
+    [35mkey[39m: "dashboard:trends:all"
+    [35mttl[39m: 60
+[2026-04-03 23:31:50.847] [32mINFO[39m: [36mGET /api/v1/dashboard/trends 200 ΓÇö 268ms[39m
+    [35mcorrelationId[39m: "fc90227b-13bc-4e68-94af-6a72fe7a4801"
+    [35muserId[39m: "37cada04-04a1-46bf-9728-cdf25808a9e0"
+    [35mmethod[39m: "GET"
+    [35murl[39m: "/api/v1/dashboard/trends"
+    [35mstatusCode[39m: 200
+    [35mduration[39m: "268ms"
+    [35mcontentLength[39m: "658"
+    [35mip[39m: "::ffff:127.0.0.1"
+[2026-04-03 23:31:50.951] [34mDEBUG[39m: [36mScope: admin ΓÇö unrestricted access[39m
+    [35mcorrelationId[39m: "d7767103-55fa-42a3-be1a-ae43db98bd5d"
+    [35muserId[39m: "37cada04-04a1-46bf-9728-cdf25808a9e0"
+    [35mrole[39m: "admin"
+[2026-04-03 23:31:51.056] [32mINFO[39m: [36mGET /api/v1/dashboard/recent-activity?limit=5 200 ΓÇö 186ms[39m
+    [35mcorrelationId[39m: "d7767103-55fa-42a3-be1a-ae43db98bd5d"
+    [35muserId[39m: "37cada04-04a1-46bf-9728-cdf25808a9e0"
+    [35mmethod[39m: "GET"
+    [35murl[39m: "/api/v1/dashboard/recent-activity?limit=5"
+    [35mstatusCode[39m: 200
+    [35mduration[39m: "186ms"
+    [35mcontentLength[39m: "1394"
+    [35mip[39m: "::ffff:127.0.0.1"
+[2026-04-03 23:31:51.069] [32mINFO[39m: [36mPostgreSQL pool closed[39m
+PASS tests/dashboard.test.ts
+[2026-04-03 23:31:51.112] [32mINFO[39m: [36mRedis connection closed[39m
+[2026-04-03 23:31:51.592] [34mDEBUG[39m: [36mRedis client connected[39m
+[2026-04-03 23:31:51.538] [34mDEBUG[39m: [36mRedis connection closed[39m
+(node:2476) Warning: SECURITY WARNING: The SSL modes 
+'prefer', 'require', and 'verify-ca' are treated as 
+aliases for 'verify-full'.
+In the next major version (pg-connection-string v3.0.0 
+and pg v9.0.0), these modes will adopt standard libpq 
+semantics, which have weaker security guarantees.
+
+To prepare for this change:
+- If you want the current behavior, explicitly use 
+'sslmode=verify-full'
+- If you want libpq compatibility now, use 
+'uselibpqcompat=true&sslmode=require'
+
+See 
+https://www.postgresql.org/docs/current/libpq-ssl.html 
+for libpq SSL mode definitions.
+[2026-04-03 23:31:52.419] [34mDEBUG[39m: [36mNew PostgreSQL client connected[39m
+    [35mcorrelationId[39m: "40e866bc-d6b9-4ba1-9c32-b34d1ddc2a3b"
+[2026-04-03 23:31:53.154] [32mINFO[39m: [36mUser logged in[39m
+    [35mcorrelationId[39m: "40e866bc-d6b9-4ba1-9c32-b34d1ddc2a3b"
+    [35muserId[39m: "37cada04-04a1-46bf-9728-cdf25808a9e0"
+    [35memail[39m: "admin@zorvyn.io"
+[2026-04-03 23:31:53.160] [32mINFO[39m: [36mPOST /api/v1/auth/login 200 ΓÇö 1613ms[39m
+    [35mcorrelationId[39m: "40e866bc-d6b9-4ba1-9c32-b34d1ddc2a3b"
+    [35mmethod[39m: "POST"
+    [35murl[39m: "/api/v1/auth/login"
+    [35mstatusCode[39m: 200
+    [35mduration[39m: "1613ms"
+    [35mcontentLength[39m: "945"
+    [35mip[39m: "::ffff:127.0.0.1"
+[2026-04-03 23:31:53.245] [34mDEBUG[39m: [36mScope: admin ΓÇö unrestricted access[39m
+    [35mcorrelationId[39m: "6f47ca7c-7404-49d1-9c27-7e00d53b0bf9"
+    [35muserId[39m: "37cada04-04a1-46bf-9728-cdf25808a9e0"
+    [35mrole[39m: "admin"
+[2026-04-03 23:31:53.607] [34mDEBUG[39m: [36mTransaction BEGIN[39m
+    [35mcorrelationId[39m: "6f47ca7c-7404-49d1-9c27-7e00d53b0bf9"
+    [35muserId[39m: "37cada04-04a1-46bf-9728-cdf25808a9e0"
+[2026-04-03 23:31:53.810] [34mDEBUG[39m: [36mAudit logged: CREATE on financial_record[39m
+    [35mcorrelationId[39m: "6f47ca7c-7404-49d1-9c27-7e00d53b0bf9"
+    [35muserId[39m: "37cada04-04a1-46bf-9728-cdf25808a9e0"
+    [35mentity[39m: "financial_record"
+    [35mentityId[39m: "cd7eaace-49d3-424e-89a4-78a8d918eeae"
+    [35maction[39m: "CREATE"
+[2026-04-03 23:31:53.883] [34mDEBUG[39m: [36mDashboard cache invalidated[39m
+    [35mcorrelationId[39m: "6f47ca7c-7404-49d1-9c27-7e00d53b0bf9"
+    [35muserId[39m: "37cada04-04a1-46bf-9728-cdf25808a9e0"
+    [35mkeysInvalidated[39m: 4
+[2026-04-03 23:31:53.972] [34mDEBUG[39m: [36mTransaction COMMIT[39m
+    [35mcorrelationId[39m: "6f47ca7c-7404-49d1-9c27-7e00d53b0bf9"
+    [35muserId[39m: "37cada04-04a1-46bf-9728-cdf25808a9e0"
+[2026-04-03 23:31:53.981] [32mINFO[39m: [36mPOST /api/v1/records 201 ΓÇö 808ms[39m
+    [35mcorrelationId[39m: "6f47ca7c-7404-49d1-9c27-7e00d53b0bf9"
+    [35muserId[39m: "37cada04-04a1-46bf-9728-cdf25808a9e0"
+    [35mmethod[39m: "POST"
+    [35murl[39m: "/api/v1/records"
+    [35mstatusCode[39m: 201
+    [35mduration[39m: "808ms"
+    [35mcontentLength[39m: "397"
+    [35mip[39m: "::ffff:127.0.0.1"
+[2026-04-03 23:31:54.093] [34mDEBUG[39m: [36mScope: admin ΓÇö unrestricted access[39m
+    [35mcorrelationId[39m: "1abc5285-9cdd-41a3-8ad0-ef9e7419761a"
+    [35muserId[39m: "37cada04-04a1-46bf-9728-cdf25808a9e0"
+    [35mrole[39m: "admin"
+[2026-04-03 23:31:54.515] [34mDEBUG[39m: [36mTransaction BEGIN[39m
+    [35mcorrelationId[39m: "1abc5285-9cdd-41a3-8ad0-ef9e7419761a"
+    [35muserId[39m: "37cada04-04a1-46bf-9728-cdf25808a9e0"
+[2026-04-03 23:31:54.720] [34mDEBUG[39m: [36mAudit logged: CREATE on financial_record[39m
+    [35mcorrelationId[39m: "1abc5285-9cdd-41a3-8ad0-ef9e7419761a"
+    [35muserId[39m: "37cada04-04a1-46bf-9728-cdf25808a9e0"
+    [35mentity[39m: "financial_record"
+    [35mentityId[39m: "594fca4e-f474-4fdc-9c44-a0bff8978f14"
+    [35maction[39m: "CREATE"
+[2026-04-03 23:31:54.854] [34mDEBUG[39m: [36mTransaction COMMIT[39m
+    [35mcorrelationId[39m: "1abc5285-9cdd-41a3-8ad0-ef9e7419761a"
+    [35muserId[39m: "37cada04-04a1-46bf-9728-cdf25808a9e0"
+[2026-04-03 23:31:54.863] [32mINFO[39m: [36mPOST /api/v1/records 201 ΓÇö 851ms[39m
+    [35mcorrelationId[39m: "1abc5285-9cdd-41a3-8ad0-ef9e7419761a"
+    [35muserId[39m: "37cada04-04a1-46bf-9728-cdf25808a9e0"
+    [35mmethod[39m: "POST"
+    [35murl[39m: "/api/v1/records"
+    [35mstatusCode[39m: 201
+    [35mduration[39m: "851ms"
+    [35mcontentLength[39m: "412"
+    [35mip[39m: "::ffff:127.0.0.1"
+[2026-04-03 23:31:54.965] [34mDEBUG[39m: [36mScope: admin ΓÇö unrestricted access[39m
+    [35mcorrelationId[39m: "6e1c99e6-0b08-4f27-8df2-6ae772b848e3"
+    [35muserId[39m: "37cada04-04a1-46bf-9728-cdf25808a9e0"
+    [35mrole[39m: "admin"
+[2026-04-03 23:31:55.011] [32mINFO[39m: [36mIdempotent request ΓÇö returning cached response from Redis[39m
+    [35mcorrelationId[39m: "6e1c99e6-0b08-4f27-8df2-6ae772b848e3"
+    [35muserId[39m: "37cada04-04a1-46bf-9728-cdf25808a9e0"
+    [35midempotencyKey[39m: "49d1f5a7-fc9a-4983-9811-27f4a970d9e1"
+[2026-04-03 23:31:55.014] [32mINFO[39m: [36mPOST /api/v1/records 201 ΓÇö 129ms[39m
+    [35mcorrelationId[39m: "6e1c99e6-0b08-4f27-8df2-6ae772b848e3"
+    [35muserId[39m: "37cada04-04a1-46bf-9728-cdf25808a9e0"
+    [35mmethod[39m: "POST"
+    [35murl[39m: "/api/v1/records"
+    [35mstatusCode[39m: 201
+    [35mduration[39m: "129ms"
+    [35mcontentLength[39m: "412"
+    [35mip[39m: "::ffff:127.0.0.1"
+[2026-04-03 23:31:55.151] [34mDEBUG[39m: [36mScope: admin ΓÇö unrestricted access[39m
+    [35mcorrelationId[39m: "f5d5c197-8af6-4f23-aae9-8fc37f356cc7"
+    [35muserId[39m: "37cada04-04a1-46bf-9728-cdf25808a9e0"
+    [35mrole[39m: "admin"
+[2026-04-03 23:31:55.512] [34mDEBUG[39m: [36mTransaction BEGIN[39m
+    [35mcorrelationId[39m: "f5d5c197-8af6-4f23-aae9-8fc37f356cc7"
+    [35muserId[39m: "37cada04-04a1-46bf-9728-cdf25808a9e0"
+[2026-04-03 23:31:55.716] [34mDEBUG[39m: [36mAudit logged: CREATE on financial_record[39m
+    [35mcorrelationId[39m: "f5d5c197-8af6-4f23-aae9-8fc37f356cc7"
+    [35muserId[39m: "37cada04-04a1-46bf-9728-cdf25808a9e0"
+    [35mentity[39m: "financial_record"
+    [35mentityId[39m: "95751624-4456-4157-b3eb-43949f2895a2"
+    [35maction[39m: "CREATE"
+[2026-04-03 23:31:55.877] [34mDEBUG[39m: [36mTransaction COMMIT[39m
+    [35mcorrelationId[39m: "f5d5c197-8af6-4f23-aae9-8fc37f356cc7"
+    [35muserId[39m: "37cada04-04a1-46bf-9728-cdf25808a9e0"
+[2026-04-03 23:31:55.884] [32mINFO[39m: [36mPOST /api/v1/records 201 ΓÇö 843ms[39m
+    [35mcorrelationId[39m: "f5d5c197-8af6-4f23-aae9-8fc37f356cc7"
+    [35muserId[39m: "37cada04-04a1-46bf-9728-cdf25808a9e0"
+    [35mmethod[39m: "POST"
+    [35murl[39m: "/api/v1/records"
+    [35mstatusCode[39m: 201
+    [35mduration[39m: "843ms"
+    [35mcontentLength[39m: "390"
+    [35mip[39m: "::ffff:127.0.0.1"
+[2026-04-03 23:31:56.019] [34mDEBUG[39m: [36mScope: admin ΓÇö unrestricted access[39m
+    [35mcorrelationId[39m: "66cfe00f-5f53-4059-80b6-e9aad191f3d6"
+    [35muserId[39m: "37cada04-04a1-46bf-9728-cdf25808a9e0"
+    [35mrole[39m: "admin"
+[2026-04-03 23:31:56.386] [34mDEBUG[39m: [36mTransaction BEGIN[39m
+    [35mcorrelationId[39m: "66cfe00f-5f53-4059-80b6-e9aad191f3d6"
+    [35muserId[39m: "37cada04-04a1-46bf-9728-cdf25808a9e0"
+[2026-04-03 23:31:56.604] [34mDEBUG[39m: [36mAudit logged: CREATE on financial_record[39m
+    [35mcorrelationId[39m: "66cfe00f-5f53-4059-80b6-e9aad191f3d6"
+    [35muserId[39m: "37cada04-04a1-46bf-9728-cdf25808a9e0"
+    [35mentity[39m: "financial_record"
+    [35mentityId[39m: "7a19c089-d9d4-4071-83e5-0f3091eb8e04"
+    [35maction[39m: "CREATE"
+[2026-04-03 23:31:56.746] [34mDEBUG[39m: [36mTransaction COMMIT[39m
+    [35mcorrelationId[39m: "66cfe00f-5f53-4059-80b6-e9aad191f3d6"
+    [35muserId[39m: "37cada04-04a1-46bf-9728-cdf25808a9e0"
+[2026-04-03 23:31:56.752] [32mINFO[39m: [36mPOST /api/v1/records 201 ΓÇö 847ms[39m
+    [35mcorrelationId[39m: "66cfe00f-5f53-4059-80b6-e9aad191f3d6"
+    [35muserId[39m: "37cada04-04a1-46bf-9728-cdf25808a9e0"
+    [35mmethod[39m: "POST"
+    [35murl[39m: "/api/v1/records"
+    [35mstatusCode[39m: 201
+    [35mduration[39m: "847ms"
+    [35mcontentLength[39m: "390"
+    [35mip[39m: "::ffff:127.0.0.1"
+[2026-04-03 23:31:56.860] [34mDEBUG[39m: [36mScope: admin ΓÇö unrestricted access[39m
+    [35mcorrelationId[39m: "ac62ed51-cf9a-4979-8065-8e640332da9f"
+    [35muserId[39m: "37cada04-04a1-46bf-9728-cdf25808a9e0"
+    [35mrole[39m: "admin"
+[2026-04-03 23:31:57.578] [34mDEBUG[39m: [36mNew PostgreSQL client connected[39m
+    [35mcorrelationId[39m: "ac62ed51-cf9a-4979-8065-8e640332da9f"
+    [35muserId[39m: "37cada04-04a1-46bf-9728-cdf25808a9e0"
+[2026-04-03 23:31:57.694] [34mDEBUG[39m: [36mTransaction BEGIN[39m
+    [35mcorrelationId[39m: "ac62ed51-cf9a-4979-8065-8e640332da9f"
+    [35muserId[39m: "37cada04-04a1-46bf-9728-cdf25808a9e0"
+[2026-04-03 23:31:57.899] [34mDEBUG[39m: [36mAudit logged: CREATE on financial_record[39m
+    [35mcorrelationId[39m: "ac62ed51-cf9a-4979-8065-8e640332da9f"
+    [35muserId[39m: "37cada04-04a1-46bf-9728-cdf25808a9e0"
+    [35mentity[39m: "financial_record"
+    [35mentityId[39m: "16e92fe0-88c6-475e-a5f9-e72b64ca0a85"
+    [35maction[39m: "CREATE"
+[2026-04-03 23:31:58.036] [34mDEBUG[39m: [36mTransaction COMMIT[39m
+    [35mcorrelationId[39m: "ac62ed51-cf9a-4979-8065-8e640332da9f"
+    [35muserId[39m: "37cada04-04a1-46bf-9728-cdf25808a9e0"
+[2026-04-03 23:31:58.041] [32mINFO[39m: [36mPOST /api/v1/records 201 ΓÇö 1263ms[39m
+    [35mcorrelationId[39m: "ac62ed51-cf9a-4979-8065-8e640332da9f"
+    [35muserId[39m: "37cada04-04a1-46bf-9728-cdf25808a9e0"
+    [35mmethod[39m: "POST"
+    [35murl[39m: "/api/v1/records"
+    [35mstatusCode[39m: 201
+    [35mduration[39m: "1263ms"
+    [35mcontentLength[39m: "380"
+    [35mip[39m: "::ffff:127.0.0.1"
+[2026-04-03 23:31:58.054] [32mINFO[39m: [36mPostgreSQL pool closed[39m
+PASS tests/idempotency.test.ts (6.985 s)
+[2026-04-03 23:31:58.110] [32mINFO[39m: [36mRedis connection closed[39m
+[2026-04-03 23:31:58.696] [34mDEBUG[39m: [36mRedis connection closed[39m
+[2026-04-03 23:31:58.856] [34mDEBUG[39m: [36mRedis client connected[39m
+[2026-04-03 23:31:59.050] [32mINFO[39m: [36mGET /health 200 ΓÇö 348ms[39m
+    [35mcorrelationId[39m: "a94b763b-fa9f-4d4c-adaa-5eed8e54aa9b"
+    [35mmethod[39m: "GET"
+    [35murl[39m: "/health"
+    [35mstatusCode[39m: 200
+    [35mduration[39m: "348ms"
+    [35mcontentLength[39m: "74"
+    [35mip[39m: "::ffff:127.0.0.1"
+[2026-04-03 23:31:59.173] [32mINFO[39m: [36mGET /health 200 ΓÇö 99ms[39m
+    [35mcorrelationId[39m: "5e23f010-607a-4d3b-82eb-d2baf315b10c"
+    [35mmethod[39m: "GET"
+    [35murl[39m: "/health"
+    [35mstatusCode[39m: 200
+    [35mduration[39m: "99ms"
+    [35mcontentLength[39m: "74"
+    [35mip[39m: "::ffff:127.0.0.1"
+[2026-04-03 23:31:59.278] [32mINFO[39m: [36mGET /health 200 ΓÇö 89ms[39m
+    [35mcorrelationId[39m: "test-correlation-123"
+    [35mmethod[39m: "GET"
+    [35murl[39m: "/health"
+    [35mstatusCode[39m: 200
+    [35mduration[39m: "89ms"
+    [35mcontentLength[39m: "74"
+    [35mip[39m: "::ffff:127.0.0.1"
+(node:2476) Warning: SECURITY WARNING: The SSL modes 
+'prefer', 'require', and 'verify-ca' are treated as 
+aliases for 'verify-full'.
+In the next major version (pg-connection-string v3.0.0 
+and pg v9.0.0), these modes will adopt standard libpq 
+semantics, which have weaker security guarantees.
+
+To prepare for this change:
+- If you want the current behavior, explicitly use 
+'sslmode=verify-full'
+- If you want libpq compatibility now, use 
+'uselibpqcompat=true&sslmode=require'
+
+See 
+https://www.postgresql.org/docs/current/libpq-ssl.html 
+for libpq SSL mode definitions.
+PASS tests/health.test.ts
+
+Test Suites: 6 passed, 6 total
+Tests:       49 passed, 49 total
+Snapshots:   0 total
+Time:        41.097 s
+Ran all test suites.
+[2026-04-03 23:32:00.091] [34mDEBUG[39m: [36mNew PostgreSQL client connected[39m
+    [35mcorrelationId[39m: "f5c8aa2f-d53e-492f-bef9-cfa409294a91"
+[2026-04-03 23:32:00.193] [32mINFO[39m: [36mGET /ready 200 ΓÇö 881ms[39m
+    [35mcorrelationId[39m: "f5c8aa2f-d53e-492f-bef9-cfa409294a91"
+    [35mmethod[39m: "GET"
+    [35murl[39m: "/ready"
+    [35mstatusCode[39m: 200
+    [35mduration[39m: "881ms"
+    [35mcontentLength[39m: "182"
+    [35mip[39m: "::ffff:127.0.0.1"
+[2026-04-03 23:32:00.305] [33mWARN[39m: [36mGET /api/v1/nonexistent 404 ΓÇö 97ms[39m
+    [35mcorrelationId[39m: "8aa83568-2081-4fb0-a459-65fd1ff70951"
+    [35mmethod[39m: "GET"
+    [35murl[39m: "/api/v1/nonexistent"
+    [35mstatusCode[39m: 404
+    [35mduration[39m: "97ms"
+    [35mcontentLength[39m: "96"
+    [35mip[39m: "::ffff:127.0.0.1"
+
+Jest has detected the following 1 open handle 
+potentially keeping Jest from exiting:
+
+  ΓùÅ  TCPWRAP
+
+    [0m [90m 3 |[39m [36mimport[39m { logger } 
+[36mfrom[39m [32m'../shared/logger.js'[39m[33m;[39m
+     [90m 4 |[39m
+    [31m[1m>[22m[39m[90m 5 |[39m [36mconst[39m 
+redis [33m=[39m [36mnew[39m [33mRedis[39m(config[3
+3m.[39mredis[33m.[39murl[33m,[39m {
+     [90m   |[39m               [31m[1m^[22m[39m
+     [90m 6 |[39m   maxRetriesPerRequest[33m:[39m 
+[35m3[39m[33m,[39m
+     [90m 7 |[39m   retryStrategy(times[33m:[39m 
+number) {
+     [90m 8 |[39m     [36mconst[39m delay 
+[33m=[39m [33mMath[39m[33m.[39mmin(times 
+[33m*[39m [35m200[39m[33m,[39m 
+[35m3000[39m)[33m;[39m[0m
+
+      at node_modules/ioredis/built/connectors/Standalone
+Connector.js:44:21
+      at StandaloneConnector.connect (node_modules/ioredi
+s/built/connectors/StandaloneConnector.js:43:16)
+      at node_modules/ioredis/built/Redis.js:122:64
+      at EventEmitter.connect 
+(node_modules/ioredis/built/Redis.js:104:25)
+      at new Redis 
+(node_modules/ioredis/built/Redis.js:77:18)
+      at Object.<anonymous> (src/config/redis.ts:5:15)
+      at Object.<anonymous> 
+(src/middleware/rateLimiter.ts:2:1)
+      at Object.<anonymous> (src/app.ts:12:1)
+      at Object.<anonymous> (tests/health.test.ts:2:1)
+

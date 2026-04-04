@@ -1,0 +1,67 @@
+version: "3.9"
+
+services:
+  # -----------------------------------------------
+  # Zorvyn Finance API
+  # -----------------------------------------------
+  api:
+    build: .
+    container_name: zorvyn-api
+    ports:
+      - "3000:3000"
+    environment:
+      NODE_ENV: development
+      PORT: 3000
+      DATABASE_URL: postgresql://zorvyn:zorvyn_secret@postgres:5432/zorvyn_finance?sslmode=disable
+      REDIS_URL: redis://redis:6379
+      JWT_ACCESS_SECRET: dev-access-secret-change-for-production
+      JWT_REFRESH_SECRET: dev-refresh-secret-change-for-production
+      JWT_ACCESS_EXPIRY: 15m
+      JWT_REFRESH_EXPIRY: 7d
+    depends_on:
+      postgres:
+        condition: service_healthy
+      redis:
+        condition: service_healthy
+    healthcheck:
+      test: ["CMD", "curl", "-f", "http://localhost:3000/health"]
+      interval: 10s
+      timeout: 5s
+      retries: 5
+
+  # -----------------------------------------------
+  # PostgreSQL 16
+  # -----------------------------------------------
+  postgres:
+    image: postgres:16-alpine
+    container_name: zorvyn-postgres
+    environment:
+      POSTGRES_USER: zorvyn
+      POSTGRES_PASSWORD: zorvyn_secret
+      POSTGRES_DB: zorvyn_finance
+    ports:
+      - "5432:5432"
+    volumes:
+      - pgdata:/var/lib/postgresql/data
+    healthcheck:
+      test: ["CMD-SHELL", "pg_isready -U zorvyn -d zorvyn_finance"]
+      interval: 5s
+      timeout: 3s
+      retries: 10
+
+  # -----------------------------------------------
+  # Redis 7
+  # -----------------------------------------------
+  redis:
+    image: redis:7-alpine
+    container_name: zorvyn-redis
+    ports:
+      - "6379:6379"
+    healthcheck:
+      test: ["CMD", "redis-cli", "ping"]
+      interval: 5s
+      timeout: 3s
+      retries: 10
+
+volumes:
+  pgdata:

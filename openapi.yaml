@@ -1,0 +1,635 @@
+openapi: 3.0.3
+info:
+  title: Zorvyn Finance API
+  description: |
+    Enterprise-grade Finance Data Processing and Access Control Backend.
+    
+    ## Authentication
+    All protected endpoints require a Bearer token in the Authorization header.
+    Obtain tokens via `POST /api/v1/auth/login`.
+    
+    ## Industry Features
+    - **Correlation IDs**: Every request gets a unique `X-Correlation-ID` header
+    - **Idempotency**: POST endpoints accept `X-Idempotency-Key` header to prevent duplicates
+    - **Rate Limiting**: All endpoints are rate-limited (see `X-RateLimit-*` headers)
+    - **Row-Level Scoping**: Non-admin users can only see data from their department
+    - **Audit Trail**: Every mutation is logged with before/after snapshots
+    - **Precision Money**: All amounts are NUMERIC(19,4) — passed as strings, never floats
+  version: 1.0.0
+  contact:
+    name: Zorvyn Engineering
+    email: engineering@zorvyn.io
+
+servers:
+  - url: http://localhost:3000
+    description: Development server
+
+tags:
+  - name: Auth
+    description: Authentication and token management
+  - name: Users
+    description: User management (Admin only)
+  - name: Records
+    description: Financial records CRUD with filtering
+  - name: Dashboard
+    description: Analytics and summary endpoints
+  - name: System
+    description: Health and readiness probes
+
+paths:
+  /health:
+    get:
+      tags: [System]
+      summary: Liveness probe
+      description: Returns 200 if the process is alive
+      responses:
+        '200':
+          description: Service is alive
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  status:
+                    type: string
+                    example: ok
+                  uptime:
+                    type: number
+                    example: 12345.67
+                  timestamp:
+                    type: string
+                    format: date-time
+
+  /ready:
+    get:
+      tags: [System]
+      summary: Readiness probe
+      description: Returns 200 only if PostgreSQL and Redis are connected
+      responses:
+        '200':
+          description: Service is ready
+        '503':
+          description: Service is not ready
+
+  /api/v1/auth/register:
+    post:
+      tags: [Auth]
+      summary: Register a new user
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              required: [email, password, full_name]
+              properties:
+                email:
+                  type: string
+                  format: email
+                  example: user@zorvyn.io
+                password:
+                  type: string
+                  minLength: 8
+                  example: Password123!
+                full_name:
+                  type: string
+                  example: John Doe
+                department:
+                  type: string
+                  example: engineering
+      responses:
+        '201':
+          description: User registered successfully
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/AuthResponse'
+        '409':
+          description: Email already registered
+
+  /api/v1/auth/login:
+    post:
+      tags: [Auth]
+      summary: Login with email and password
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              required: [email, password]
+              properties:
+                email:
+                  type: string
+                  format: email
+                  example: admin@zorvyn.io
+                password:
+                  type: string
+                  example: Password123!
+      responses:
+        '200':
+          description: Login successful
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/AuthResponse'
+        '401':
+          description: Invalid credentials
+
+  /api/v1/auth/refresh:
+    post:
+      tags: [Auth]
+      summary: Refresh access token
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              required: [refreshToken]
+              properties:
+                refreshToken:
+                  type: string
+      responses:
+        '200':
+          description: Token refreshed
+        '401':
+          description: Invalid or expired refresh token
+
+  /api/v1/auth/logout:
+    post:
+      tags: [Auth]
+      summary: Logout and revoke refresh token
+      security:
+        - bearerAuth: []
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              required: [refreshToken]
+              properties:
+                refreshToken:
+                  type: string
+      responses:
+        '200':
+          description: Logged out successfully
+
+  /api/v1/users:
+    get:
+      tags: [Users]
+      summary: List all users (paginated)
+      security:
+        - bearerAuth: []
+      parameters:
+        - name: page
+          in: query
+          schema:
+            type: integer
+            default: 1
+        - name: limit
+          in: query
+          schema:
+            type: integer
+            default: 20
+        - name: role
+          in: query
+          schema:
+            type: string
+            enum: [viewer, analyst, admin]
+        - name: status
+          in: query
+          schema:
+            type: string
+            enum: [active, inactive, suspended]
+        - name: department
+          in: query
+          schema:
+            type: string
+      responses:
+        '200':
+          description: List of users
+        '403':
+          description: Admin only
+
+  /api/v1/users/{id}:
+    get:
+      tags: [Users]
+      summary: Get user by ID
+      security:
+        - bearerAuth: []
+      parameters:
+        - name: id
+          in: path
+          required: true
+          schema:
+            type: string
+            format: uuid
+      responses:
+        '200':
+          description: User details
+        '404':
+          description: User not found
+    put:
+      tags: [Users]
+      summary: Update user profile
+      security:
+        - bearerAuth: []
+      parameters:
+        - name: id
+          in: path
+          required: true
+          schema:
+            type: string
+            format: uuid
+      requestBody:
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                full_name:
+                  type: string
+                email:
+                  type: string
+                  format: email
+                department:
+                  type: string
+      responses:
+        '200':
+          description: User updated
+    delete:
+      tags: [Users]
+      summary: Soft delete user
+      security:
+        - bearerAuth: []
+      parameters:
+        - name: id
+          in: path
+          required: true
+          schema:
+            type: string
+            format: uuid
+      responses:
+        '200':
+          description: User deleted
+
+  /api/v1/users/{id}/role:
+    patch:
+      tags: [Users]
+      summary: Change user role
+      security:
+        - bearerAuth: []
+      parameters:
+        - name: id
+          in: path
+          required: true
+          schema:
+            type: string
+            format: uuid
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              required: [role]
+              properties:
+                role:
+                  type: string
+                  enum: [viewer, analyst, admin]
+      responses:
+        '200':
+          description: Role updated
+
+  /api/v1/users/{id}/status:
+    patch:
+      tags: [Users]
+      summary: Change user status
+      security:
+        - bearerAuth: []
+      parameters:
+        - name: id
+          in: path
+          required: true
+          schema:
+            type: string
+            format: uuid
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              required: [status]
+              properties:
+                status:
+                  type: string
+                  enum: [active, inactive, suspended]
+      responses:
+        '200':
+          description: Status updated
+
+  /api/v1/records:
+    post:
+      tags: [Records]
+      summary: Create a financial record
+      description: |
+        Creates a new financial record. Supports idempotency via `X-Idempotency-Key` header.
+        Amounts must be passed as strings (e.g., "15000.0000"). Admin only.
+      security:
+        - bearerAuth: []
+      parameters:
+        - name: X-Idempotency-Key
+          in: header
+          description: Unique key to prevent duplicate creation
+          schema:
+            type: string
+            format: uuid
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/CreateRecord'
+      responses:
+        '201':
+          description: Record created
+        '409':
+          description: Duplicate request (idempotency key already used)
+    get:
+      tags: [Records]
+      summary: List financial records (filtered, paginated, scoped)
+      description: |
+        Returns records scoped to the user's department (admins see all).
+        Supports filtering by type, category, date range, and pagination.
+      security:
+        - bearerAuth: []
+      parameters:
+        - name: type
+          in: query
+          schema:
+            type: string
+            enum: [income, expense, transfer]
+        - name: category
+          in: query
+          schema:
+            type: string
+        - name: dateFrom
+          in: query
+          schema:
+            type: string
+            format: date
+        - name: dateTo
+          in: query
+          schema:
+            type: string
+            format: date
+        - name: page
+          in: query
+          schema:
+            type: integer
+            default: 1
+        - name: limit
+          in: query
+          schema:
+            type: integer
+            default: 20
+        - name: sort
+          in: query
+          schema:
+            type: string
+            enum: [date, amount, created_at, category]
+            default: date
+        - name: order
+          in: query
+          schema:
+            type: string
+            enum: [asc, desc]
+            default: desc
+      responses:
+        '200':
+          description: Paginated list of records
+
+  /api/v1/records/{id}:
+    get:
+      tags: [Records]
+      summary: Get record by ID
+      security:
+        - bearerAuth: []
+      parameters:
+        - name: id
+          in: path
+          required: true
+          schema:
+            type: string
+            format: uuid
+      responses:
+        '200':
+          description: Record details
+        '404':
+          description: Record not found
+    put:
+      tags: [Records]
+      summary: Update a financial record
+      security:
+        - bearerAuth: []
+      parameters:
+        - name: id
+          in: path
+          required: true
+          schema:
+            type: string
+            format: uuid
+      requestBody:
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                amount:
+                  type: string
+                  description: Decimal string (e.g., "25000.0000")
+                type:
+                  type: string
+                  enum: [income, expense, transfer]
+                category:
+                  type: string
+                description:
+                  type: string
+                date:
+                  type: string
+                  format: date
+      responses:
+        '200':
+          description: Record updated
+    delete:
+      tags: [Records]
+      summary: Soft delete a financial record
+      security:
+        - bearerAuth: []
+      parameters:
+        - name: id
+          in: path
+          required: true
+          schema:
+            type: string
+            format: uuid
+      responses:
+        '200':
+          description: Record deleted
+
+  /api/v1/dashboard/summary:
+    get:
+      tags: [Dashboard]
+      summary: Get financial summary
+      description: Returns total income, total expenses, net balance, and record count
+      security:
+        - bearerAuth: []
+      responses:
+        '200':
+          description: Dashboard summary
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/DashboardSummary'
+
+  /api/v1/dashboard/category-breakdown:
+    get:
+      tags: [Dashboard]
+      summary: Get category-wise totals
+      security:
+        - bearerAuth: []
+      responses:
+        '200':
+          description: Category breakdown
+
+  /api/v1/dashboard/trends:
+    get:
+      tags: [Dashboard]
+      summary: Get monthly trends (last 12 months)
+      security:
+        - bearerAuth: []
+      responses:
+        '200':
+          description: Monthly trend data
+
+  /api/v1/dashboard/recent-activity:
+    get:
+      tags: [Dashboard]
+      summary: Get recent financial activity
+      security:
+        - bearerAuth: []
+      parameters:
+        - name: limit
+          in: query
+          schema:
+            type: integer
+            default: 10
+      responses:
+        '200':
+          description: Recent records
+
+components:
+  securitySchemes:
+    bearerAuth:
+      type: http
+      scheme: bearer
+      bearerFormat: JWT
+      description: |
+        Obtain a token via POST /api/v1/auth/login.
+        Use the accessToken in the Authorization header.
+
+  schemas:
+    AuthResponse:
+      type: object
+      properties:
+        success:
+          type: boolean
+        data:
+          type: object
+          properties:
+            user:
+              $ref: '#/components/schemas/User'
+            tokens:
+              type: object
+              properties:
+                accessToken:
+                  type: string
+                refreshToken:
+                  type: string
+
+    User:
+      type: object
+      properties:
+        id:
+          type: string
+          format: uuid
+        email:
+          type: string
+          format: email
+        full_name:
+          type: string
+        role:
+          type: string
+          enum: [viewer, analyst, admin]
+        department:
+          type: string
+        status:
+          type: string
+          enum: [active, inactive, suspended]
+        created_at:
+          type: string
+          format: date-time
+        updated_at:
+          type: string
+          format: date-time
+
+    CreateRecord:
+      type: object
+      required: [amount, type, category, date]
+      properties:
+        amount:
+          type: string
+          description: Decimal string — never a float (e.g., "15000.0000")
+          example: "15000.0000"
+        type:
+          type: string
+          enum: [income, expense, transfer]
+          example: income
+        category:
+          type: string
+          example: revenue
+        description:
+          type: string
+          example: Monthly SaaS revenue
+        date:
+          type: string
+          format: date
+          example: "2026-03-15"
+        department:
+          type: string
+          example: headquarters
+
+    DashboardSummary:
+      type: object
+      properties:
+        success:
+          type: boolean
+        data:
+          type: object
+          properties:
+            total_income:
+              type: string
+              description: Decimal string
+              example: "1250000.0000"
+            total_expenses:
+              type: string
+              example: "450000.0000"
+            net_balance:
+              type: string
+              example: "800000.0000"
+            record_count:
+              type: integer
+              example: 100
