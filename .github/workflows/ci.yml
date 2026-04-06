@@ -33,9 +33,36 @@ jobs:
     name: Integration Tests
     runs-on: ubuntu-latest
     needs: lint-and-build
+
+    # Spin up real PostgreSQL and Redis inside the CI runner
+    services:
+      postgres:
+        image: postgres:16-alpine
+        env:
+          POSTGRES_USER: zorvyn
+          POSTGRES_PASSWORD: zorvyn_ci
+          POSTGRES_DB: zorvyn_test
+        ports:
+          - 5432:5432
+        options: >-
+          --health-cmd pg_isready
+          --health-interval 5s
+          --health-timeout 5s
+          --health-retries 10
+
+      redis:
+        image: redis:7-alpine
+        ports:
+          - 6379:6379
+        options: >-
+          --health-cmd "redis-cli ping"
+          --health-interval 5s
+          --health-timeout 5s
+          --health-retries 10
+
     env:
-      DATABASE_URL: ${{ secrets.DATABASE_URL }}
-      REDIS_URL: ${{ secrets.REDIS_URL }}
+      DATABASE_URL: postgresql://zorvyn:zorvyn_ci@localhost:5432/zorvyn_test
+      REDIS_URL: redis://localhost:6379
       JWT_ACCESS_SECRET: ci-test-access-secret-do-not-use-in-prod
       JWT_REFRESH_SECRET: ci-test-refresh-secret-do-not-use-in-prod
       JWT_ACCESS_EXPIRY: 15m
@@ -55,6 +82,12 @@ jobs:
 
       - name: Install dependencies
         run: npm ci
+
+      - name: Run migrations
+        run: npm run migrate
+
+      - name: Seed test data
+        run: npm run seed
 
       - name: Run integration tests
         run: npm test
