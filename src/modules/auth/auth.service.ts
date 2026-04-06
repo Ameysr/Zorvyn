@@ -198,14 +198,14 @@ export class AuthService {
     };
 
     const accessToken = jwt.sign(payload, config.jwt.accessSecret, {
-      expiresIn: config.jwt.accessExpiry,
+      expiresIn: config.jwt.accessExpiry as jwt.SignOptions['expiresIn'],
     });
 
     const jti = crypto.randomUUID();
     const refreshToken = jwt.sign(
       { ...payload, jti },
       config.jwt.refreshSecret,
-      { expiresIn: config.jwt.refreshExpiry }
+      { expiresIn: config.jwt.refreshExpiry as jwt.SignOptions['expiresIn'] }
     );
 
     // Store refresh token hash in DB for revocation support

@@ -9,8 +9,8 @@
     "dev": "tsx watch src/server.ts",
     "migrate": "tsx scripts/migrate.ts",
     "seed": "tsx scripts/seed.ts",
-    "test": "node --experimental-vm-modules node_modules/.bin/jest --config jest.config.cjs --forceExit --detectOpenHandles",
-    "test:verbose": "node --experimental-vm-modules node_modules/.bin/jest --config jest.config.cjs --verbose --forceExit --detectOpenHandles"
+    "test": "npx jest --config jest.config.cjs --forceExit --detectOpenHandles",
+    "test:verbose": "npx jest --config jest.config.cjs --verbose --forceExit --detectOpenHandles"
   },
   "keywords": [
     "finance",

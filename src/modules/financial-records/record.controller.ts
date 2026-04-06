@@ -52,7 +52,7 @@ export class RecordController {
       const authReq = req as AuthenticatedRequest;
       const scopeDepartment = authReq.scope?.department;
 
-      const record = await RecordService.getById(req.params.id, scopeDepartment);
+      const record = await RecordService.getById(req.params.id as string, scopeDepartment);
       ApiResponseHelper.success(res, record);
     } catch (error) {
       next(error);
@@ -66,7 +66,7 @@ export class RecordController {
     try {
       const authReq = req as AuthenticatedRequest;
       const record = await RecordService.update(
-        req.params.id,
+        req.params.id as string,
         req.body,
         authReq.user!.userId,
         authReq.scope?.department,
@@ -87,7 +87,7 @@ export class RecordController {
     try {
       const authReq = req as AuthenticatedRequest;
       await RecordService.delete(
-        req.params.id,
+        req.params.id as string,
         authReq.scope?.department,
         req.ip,
         req.get('user-agent')

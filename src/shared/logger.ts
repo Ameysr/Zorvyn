@@ -78,7 +78,7 @@ const baseLogger = pino({
  */
 export const logger = new Proxy(baseLogger, {
   get(target, prop: string) {
-    const original = (target as Record<string, unknown>)[prop];
+    const original = (target as unknown as Record<string, unknown>)[prop];
     if (typeof original === 'function' && ['fatal', 'error', 'warn', 'info', 'debug', 'trace'].includes(prop)) {
       return (...args: unknown[]) => {
         const correlationId = getCorrelationId();

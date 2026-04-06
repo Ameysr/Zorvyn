@@ -52,7 +52,7 @@ export class ApiResponseHelper {
       error: {
         code,
         message,
-        ...(details && { details }),
+        ...(details ? { details } : {}),
       },
     };
     res.status(statusCode).json(response);

@@ -22,7 +22,7 @@ export class UserController {
    */
   static async getById(req: Request, res: Response, next: NextFunction): Promise<void> {
     try {
-      const user = await UserService.getById(req.params.id);
+      const user = await UserService.getById(req.params.id as string);
       ApiResponseHelper.success(res, user);
     } catch (error) {
       next(error);
@@ -34,7 +34,7 @@ export class UserController {
    */
   static async update(req: Request, res: Response, next: NextFunction): Promise<void> {
     try {
-      const user = await UserService.update(req.params.id, req.body, req.ip, req.get('user-agent'));
+      const user = await UserService.update(req.params.id as string, req.body, req.ip, req.get('user-agent'));
       ApiResponseHelper.success(res, user);
     } catch (error) {
       next(error);
@@ -46,7 +46,7 @@ export class UserController {
    */
   static async changeRole(req: Request, res: Response, next: NextFunction): Promise<void> {
     try {
-      const user = await UserService.changeRole(req.params.id, req.body.role, req.ip, req.get('user-agent'));
+      const user = await UserService.changeRole(req.params.id as string, req.body.role, req.ip, req.get('user-agent'));
       ApiResponseHelper.success(res, user);
     } catch (error) {
       next(error);
@@ -58,7 +58,7 @@ export class UserController {
    */
   static async changeStatus(req: Request, res: Response, next: NextFunction): Promise<void> {
     try {
-      const user = await UserService.changeStatus(req.params.id, req.body.status, req.ip, req.get('user-agent'));
+      const user = await UserService.changeStatus(req.params.id as string, req.body.status, req.ip, req.get('user-agent'));
       ApiResponseHelper.success(res, user);
     } catch (error) {
       next(error);
@@ -70,7 +70,7 @@ export class UserController {
    */
   static async delete(req: Request, res: Response, next: NextFunction): Promise<void> {
     try {
-      await UserService.delete(req.params.id, req.ip, req.get('user-agent'));
+      await UserService.delete(req.params.id as string, req.ip, req.get('user-agent'));
       ApiResponseHelper.success(res, { message: 'User deleted successfully' });
     } catch (error) {
       next(error);
