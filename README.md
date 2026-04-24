@@ -1,4 +1,4 @@
-# Zorvyn Finance Backend
+# Finance Backend
 
 **Enterprise-grade Financial Data Processing & Access Control API**
 
